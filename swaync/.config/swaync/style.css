@@ -1,0 +1,219 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+:root {
+  --border-radius: 16px;
+  --cc-bg: transparent;
+  --widget-background: alpha(@background, 0.5);
+  --notification-bg: alpha(@color9, 1);
+  --text-color: @color15;
+  --accent-color: @color9;
+  --complementary-color: @color11;
+  --padding: calc(var(--border-radius) / 2);
+  --my-font: "JetBrainsMono Nerd Font";
+}
+
+/* Main control center - MUST be transparent */
+.control-center {
+  background: alpha(@background, 0.4); /* Semi-transparent background */
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  border: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  font-family: var(--my-font);
+}
+
+/* Widget styling */
+.widgets > .widget,
+.widget-mpris > box > button {
+  background: var(--widget-background);
+  border-radius: var(--border-radius);
+  padding: calc(var(--border-radius) / 2);
+  border: none;
+}
+.control-center-list-placeholder {
+  padding: var(--border-radius);
+}
+
+.notification-group {
+  border-radius: var(--border-radius);
+  padding: 8px;
+}
+
+/* MPRIS widget */
+.widget.widget-mpris {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+}
+
+.widget.widget-mpris > carouselindicatordots {
+  --dots-padding: 4px;
+  padding: 1px 0px 0px 0px;
+  padding-left: var(--dots-padding);
+  padding-right: calc(6px + var(--dots-padding));
+  margin: 0;
+  margin-top: var(--padding);
+}
+
+.widget-mpris > box > button:hover {
+  background: var(--accent-color);
+}
+
+.widget-mpris-player {
+  box-shadow: none;
+  border: none;
+  margin: 0 var(--padding);
+}
+
+.widget-mpris-player:only-child {
+  margin: 0;
+}
+
+/* Notifications */
+.notification {
+  background: var(--notification-bg);
+  border-radius: var(--border-radius);
+  margin: 8px;
+}
+
+.notification-content {
+  padding: var(--padding);
+  color: var(--text-color);
+}
+
+.notification .summary {
+  font-family: var(--my-font);
+  font-size: 0.9909rem;
+  font-weight: 500;
+}
+
+.notification .body {
+  font-family: var(--my-font);
+  font-size: 0.8891rem;
+  font-weight: 400;
+  margin-top: 0.31rem;
+}
+
+.notification .time {
+  font-size: 0.8291rem;
+  font-weight: 500;
+}
+
+/* Close button */
+.close-button {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--text-color);
+  min-height: 20px;
+  min-width: 20px;
+  padding: var(--padding);
+}
+
+.close-button:hover {
+  background: var(--complementary-color);
+}
+
+/* Title widget */
+.widget-title {
+  color: var(--text-color);
+  padding: 5px 15px 5px 5px;
+}
+
+.widget-title > button {
+  background: rgba(255, 85, 85, 0.3);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  padding: 0px 10px;
+  margin-right: 0px;
+  margin-top: 3px;
+  transition: all 0.7s ease;
+}
+
+.widget-title > button:hover {
+  background: var(--accent-color);
+  transition: all 0.7s ease;
+}
+
+/* Buttons grid */
+.widget-buttons-grid {
+  font-family: var(--my-font);
+  background: transparent;
+  padding: 8px;
+  margin: 0px 10px 10px 10px;
+  border-radius: var(--border-radius);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: transparent;
+  border-radius: var(--border-radius);
+  border: none;
+  transition: all 0.5s ease;
+  /* min-width: 62px; 3 buttons */
+  min-width: 115px; /*2 buttons */
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @color4;
+  transition: all 0.5s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: var(--accent-color);
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button label {
+  font-size: 20px;
+  color: @color7;
+  transition: all 0.7s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover label,
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+  color: var(--text-color);
+  transition: all 0.7s ease;
+}
+
+/* Volume and backlight sliders */
+.widget-volume,
+.widget-backlight {
+  background: transparent;
+  padding: 8px;
+  margin: 0px 8px 0px 8px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  border: none;
+}
+
+trough {
+  border-radius: 20px;
+  background: transparent;
+}
+
+trough highlight {
+  background: var(--accent-color);
+  border-radius: 20px;
+  transition: all 0.7s ease;
+}
+
+trough slider {
+  background: transparent;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-notifications .notification {
+  animation: fadeIn 0.5s ease-in-out;
+}

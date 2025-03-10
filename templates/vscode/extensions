@@ -1,0 +1,22 @@
+# VS Code
+Remote - SSH GitHub Copilot Hex editor (ms-vscode) Code runner (run snippet of code
+instead of entire script)
+Wal Theme - VS Code theme based on pywal.
+
+# Python
+Python (Microsoft) 
+- Python Debugger 
+- Pylance # Language server
+Ruff # Lint and format
+
+# C++
+C/C++
+- C/C++ Extension Pack
+- C/C++ Themes clangd # IntelliSense, language server, compiler, formatter, and more.
+CMake CMake Tools
+
+# CSV
+Rainbow CSV
+
+# Formatting
+Prettier: JSON, Markdown, HTML, JavaScript, TypeScript, etc. Also plugins for: java, kotlin, go, nginx, rust, sh, sql, and more.

@@ -1,0 +1,13 @@
+# Add this file to ~/.ssh  to keep track of and easily use the SSH keys on the host they are stored on.
+
+# Host template, add public to ~/.ssh/authorized_keys.
+Host config_name (usually the same as HostName)
+  HostName hostname/ip
+  User username
+  IdentityFile ~/.ssh/path/to/private_key
+
+# Git template, add public to "SSH and GPG keys" on github.
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/path/to/private_key

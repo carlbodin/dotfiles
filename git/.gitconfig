@@ -1,0 +1,16 @@
+[user]
+        email =
+        name =
+[init]
+        defaultBranch = main
+[core]
+        editor = nano
+[alias]
+        st = status
+        br = branch
+        co = checkout
+        cp = cherry-pick
+        su = submodule update --recursive --init
+        last = log -1 HEAD
+        siiu = push --force-with-lease --no-verify
+        ria = rebase -i --autosquash

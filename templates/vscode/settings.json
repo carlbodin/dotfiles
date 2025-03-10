@@ -1,0 +1,66 @@
+{
+  //=======================================
+  //          Workbench - Visual
+  //=======================================
+  "workbench.tree.indent": 20,
+
+  // VSCode's integrated terminal has its own color definitions that are related to the theme, or
+  // specific settings "workbench.colorCustomizations". Inspiration: https://glitchbone.github.io/vscode-base16-term/.
+  "workbench.colorCustomizations": {
+    "terminal.ansiBlack": "#000000",
+    "terminal.ansiBlue": "#1c2fa7",
+    "terminal.ansiCyan": "#32a1bd",
+    "terminal.ansiGreen": "#16a741",
+    "terminal.ansiMagenta": "#9213a3",
+    "terminal.ansiRed": "#f32342",
+    "terminal.ansiWhite": "#a69fb1",
+    "terminal.ansiYellow": "#b67e1d",
+    "terminal.ansiBrightBlack": "#575757",
+    "terminal.ansiBrightBlue": "#2159f3",
+    "terminal.ansiBrightCyan": "#39c3e6",
+    "terminal.ansiBrightGreen": "#20dd59",
+    "terminal.ansiBrightMagenta": "#c018d6",
+    "terminal.ansiBrightRed": "#dd1b38",
+    "terminal.ansiBrightWhite": "#e2dbee",
+    "terminal.ansiBrightYellow": "#da9520"
+  },
+
+  //=======================================
+  //          Editor - Behavioral
+  //=======================================
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+
+  //=======================================
+  //                Python
+  //=======================================
+
+  // Python settings.
+  "python.venvFolders": ["venv, .venv"],
+
+  // Extension: Ruff, a Python linter and formatter.
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "ruff.enable": true,
+  "ruff.lineLength": 88,
+
+  //=======================================
+  //                C++
+  //=======================================
+
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+
+  "C_Cpp.intelliSenseEngine": "disabled", // Disable for MS C++ extension when using clangd.
+  "clangd.path": "c:\\Users\\username\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\19.1.2\\clangd_19.1.2\\bin\\clangd.exe",
+
+  //=======================================
+  //        Telemetry - Privacy
+  //=======================================
+  "telemetry.telemetryLevel": "crash",
+  "gitlens.telemetry.enabled": false // Extension: GitLens.
+}

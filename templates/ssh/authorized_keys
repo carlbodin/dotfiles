@@ -1,0 +1,4 @@
+# Add this file on the host which should allow other hosts to sign in to it using SSH.
+
+[optional, settings, restrictions] <paste public key 1>
+[optional, settings, restrictions] <paste public key 2>

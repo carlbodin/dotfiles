@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    // POETRY/UV ENV
+    {
+      "name": "Program in Poetry/UV Environment",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/.venv/bin/python3.10", // Virtual environment.
+      "program": "${workspaceFolder}/src/production/vics/cli.py", // Main Script.
+      "args": ["extract", "--output-dir", "/tmp/vics_extract"] // Args.
+    },
+    // PYTEST
+    {
+      "name": "Pytest",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "integratedTerminal",
+      "python": "${workspaceFolder}/.venv/bin/python3.10",
+      "module": "pytest",
+      "args": ["tests/production/faceviewnet", "--force_cpu"],
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    }
+  ]
+}

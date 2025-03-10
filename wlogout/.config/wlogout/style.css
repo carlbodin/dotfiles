@@ -1,0 +1,71 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+* {
+  all: unset;
+  background-image: none;
+  margin: unset;
+  padding: unset;
+  transition: 20ms cubic-bezier(0, 0, 1, 1);
+}
+
+window {
+  background-color: alpha(@color4, 0.11);
+}
+
+button {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: larger;
+  background-color: alpha(@color9, 0.95);
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#suspend {
+  background-image: image(url("pause.png"));
+  margin: 300px 5px 300px 700px;
+  padding: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+#reboot {
+  background-image: image(url("restart.png"));
+  margin: 300px 5px 300px 5px;
+  padding: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+#shutdown {
+  background-image: image(url("power.png"));
+  margin: 300px 5px 300px 5px;
+  padding: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+#logout {
+  background-image: image(url("logout.png"));
+  margin: 300px 700px 300px 5px;
+  padding: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+button:focus {
+  background-color: alpha(@color5, 1);
+  background-position: center;
+}
+
+/* #suspend:focus {
+  margin: 5px 5px 5px 300px;
+}
+
+#reboot:focus {
+  margin: 5px 5px 5px 300px;
+} */
+
+/* #shutdown:focus {
+  margin: 5px 300px 5px 5px;
+}
+
+#logout:focus {
+  margin: 5px 300px 5px 5px;
+} */

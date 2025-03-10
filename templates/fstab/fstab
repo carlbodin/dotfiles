@@ -1,0 +1,8 @@
+# /etc/fstab
+
+# sshfs
+username@host:/mnt/point /mnt/point fuse.sshfs allow_other,default_permissions,x-systemd.automount,_netdev,reconnect,identityfile=$HOME/.ssh/id_rsa_private_key 0 0
+
+# cifs
+//domain_or_ip/folder /mnt/point cifs vers=2.0,uid=username,credentials=/credentials/file,ro,iocharset=utf8 0 0
+

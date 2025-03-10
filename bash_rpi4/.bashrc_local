@@ -1,0 +1,7 @@
+#
+# Local extension to .bashrc.
+#
+
+# Aliases.
+alias poff='sudo udisksctl power-off -b'  # Power off block device.
+alias t='vcgencmd measure_temp'  # CPU temp on Raspberry OS.

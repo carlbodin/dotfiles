@@ -1,0 +1,102 @@
+@import "/home/carl/.cache/wal/colors-waybar.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  text-shadow: none;
+  background-color: transparent;
+}
+
+window {
+  all: unset;
+  padding: 1.25em;
+  border-radius: 10px;
+  background-color: alpha(@background, 0.5);
+}
+
+#inner-box {
+  margin: 0em;
+  padding: 0em;
+  border: none;
+}
+
+#outer-box {
+  border: none;
+}
+
+#scroll {
+  margin: 0em;
+  padding: 1em;
+  border: none;
+}
+
+#input {
+  all: unset;
+  font-size: 14px;
+  margin-left: 1.25em;
+  margin-right: 1.25em;
+  margin-top: 1.25em;
+  padding: 1em;
+  border: none;
+  outline: none;
+  color: @text;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: alpha(@color1, 0.5);
+}
+
+#input image {
+  border: none;
+  color: @foreground;
+  padding-right: 0.2em;
+}
+
+#input * {
+  border: none;
+  outline: none;
+}
+
+#input:focus {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+#text {
+  margin: 0.3em;
+  border: none;
+  color: @foreground;
+  outline: none;
+}
+
+#entry {
+  border: none;
+  margin: 0.3em;
+  padding: 0.65em;
+}
+
+#entry #text {
+  font-size: 0.8em;
+  margin-left: 1em;
+}
+
+#entry arrow {
+  border: none;
+  color: @foreground;
+}
+
+#entry:selected {
+  border: none;
+  border-radius: 10px;
+  background-color: alpha(@color1, 0.5);
+}
+
+#entry:selected #text {
+  color: @foreground;
+}
+
+#entry:drop(active) {
+  background-color: #000000;
+}
