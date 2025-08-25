@@ -20,3 +20,6 @@ alias cod='code --enable-features=UseOzonePlatform --ozone-platform-hint=wayland
 alias disc='discord --no-sandbox'  # Does NOT seem to work. "To avoid app freezing. Flag to not run discord isolated.
 alias si='swayimg'  # Sway wayland image viewer.
 alias pacprune='sudo pacman -Rns $(pacman -Qdtq)'  # Remove all orphaned packages, along with their subdependencies and configs.
+
+# PATH extension.
+export PATH="$HOME/.local/bin:$PATH"

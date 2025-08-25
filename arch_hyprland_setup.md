@@ -16,7 +16,7 @@ hyprland
 
 ```bash
 # System
-sudo pacman -S pacman-contrib polkit ufw xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
+sudo pacman -S --needed linux-firmware pacman-contrib polkit ufw xdg-desktop-portal-hyprland xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
 # Programs
 sudo pacman -S nautilus yazi firefox swayimg ffmpeg baobab spotify gimp vlc
 # Font
@@ -189,3 +189,44 @@ Heroic Games Launcher:
 `yay heroic-games-launcher-bin`
 
 discord, see AUR
+
+## Add Custom Binaries to App Launchers
+
+Add a symlink in `~/.local/bin` to your binary.
+
+```bash
+mkdir -p ~/.local/bin
+
+ln -s ~/git/Cemu/bin/Cemu_release ~/.local/bin/cemu
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+```
+
+Add desktop entry file to `~/.local/share/applications` and make it executable.
+
+```bash
+nano ~/.local/share/applications/cemu.desktop
+
+chmod +x ~/.local/share/applications/cemu.desktop
+```
+
+```bash
+[Desktop Entry]
+Name=Cemu
+Comment=Wii U Emulator
+Exec=/home/username/.local/bin/cemu
+Icon=/absolute/path/to/icon.ico
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Keywords=wii;wiiu;emulator;nintendo;
+StartupNotify=true
+```
+
+For keywords, use your own search words. For categories, see freedesktop.org's [registry](https://specifications.freedesktop.org/menu-spec/latest/category-registry.html).
+
+If you run into errors, run this command to validate the entry.
+
+```bash
+desktop-file-validate ~/.local/share/applications/cemu.desktop
+```
