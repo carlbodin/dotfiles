@@ -2,6 +2,7 @@
 
 ## Places to Change Manually at Install
 
+- Backup your current dotfiles. You can use my script `backup-local-dotfiles.sh`, if you dare, to copy relevant files to `~/.local-dotfiles-backup`.
 - Start with the `hyprland.conf`. Make sure the monitors are correctly configured, your monitor setup and resolution may differ from mine. If you mouse is slow, increase the `sensitivity` value under the `input` block.
 - See Hyprland binds in `~/.config/hypr/hyprland.conf` for how I control my Window manager.
 - Hardcoded absolute paths with username. `/home/carl` --> `/home/username`.
