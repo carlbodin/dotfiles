@@ -49,6 +49,7 @@ alias grep='grep --color=auto'
 alias o='xdg-open'
 alias pss='ps -aux | grep'
 alias fz='fzf --preview "cat {}" | xargs -r code'
+alias po='sudo udisksctl power-off -b'  # Power off block device.
 
 # Set up fzf key bindings and fuzzy completion.
 eval "$(fzf --bash)"
