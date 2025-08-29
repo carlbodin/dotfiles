@@ -17,7 +17,7 @@ hyprland
 
 ```bash
 # System
-sudo pacman -S --needed linux-firmware pacman-contrib polkit ufw xdg-desktop-portal-hyprland xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
+sudo pacman -S --needed linux-firmware pacman-contrib polkit openssh ufw qt5-wayland qt6-wayland wget curl xdg-desktop-portal-hyprland xdg-utils xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
 # Programs
 sudo pacman -S nautilus yazi firefox swayimg ffmpeg baobab spotify gimp vlc
 # Font
