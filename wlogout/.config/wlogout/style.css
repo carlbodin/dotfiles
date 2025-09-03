@@ -14,7 +14,7 @@ window {
 
 button {
   font-family: "JetBrainsMono Nerd Font";
-  font-size: larger;
+  font-size: 100px;
   background-color: alpha(@color9, 0.95);
   border-radius: 15px;
   background-repeat: no-repeat;
@@ -23,25 +23,25 @@ button {
 
 #suspend {
   background-image: image(url("pause.png"));
-  margin: 150px 0px 150px 250px;
+  margin: 120px 0px 120px 100px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 #reboot {
   background-image: image(url("restart.png"));
-  margin: 150px 0px 150px 5px;
+  margin: 120px 0px 120px 15px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 #shutdown {
   background-image: image(url("power.png"));
-  margin: 150px 0px 150px 5px;
+  margin: 120px 0px 120px 15px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
 #logout {
   background-image: image(url("logout.png"));
-  margin: 150px 250px 150px 5px;
+  margin: 120px 100px 120px 15px;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -51,15 +51,15 @@ button:focus {
 }
 
 #suspend:focus {
-  margin: 130px 0px 130px 250px;
+  margin: 110px 0px 110px 100px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
 }
 #reboot:focus,
 #shutdown:focus {
-  margin: 130px 0px 130px 5px;
+  margin: 110px 0px 110px 15px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
 }
 #logout:focus {
-  margin: 130px 250px 130px 5px;
+  margin: 110px 100px 110px 15px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
 }
