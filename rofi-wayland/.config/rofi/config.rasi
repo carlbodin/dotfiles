@@ -1,8 +1,0 @@
-@theme "/home/carl/.local/share/rofi/themes/type-3-style-1.rasi"
-
-configuration {
-    display-drun: "🔍";
-    hover-select: true;
-    click-to-exit: true;
-    matching: "fuzzy";
-}
