@@ -2,19 +2,18 @@
 
 :root {
   --border-radius: 16px;
-  --cc-bg: transparent;
-  --widget-background: alpha(@background, 0.5);
+  --widget-background: transparent;
   --notification-bg: alpha(@color9, 1);
   --text-color: @color15;
   --accent-color: @color9;
   --complementary-color: @color11;
   --padding: calc(var(--border-radius) / 2);
+  --margin: var(--border-radius);
   --my-font: "JetBrainsMono Nerd Font";
 }
 
-/* Main control center - MUST be transparent */
 .control-center {
-  background: alpha(@background, 0.4); /* Semi-transparent background */
+  background: alpha(@background, 0.4);
   border-radius: var(--border-radius);
   color: var(--text-color);
   border: none;
@@ -108,11 +107,14 @@
   color: var(--text-color);
   min-height: 20px;
   min-width: 20px;
-  padding: var(--padding);
+  padding: calc(var(--padding) * 0.6);
+  margin: var(--margin);
 }
 
 .close-button:hover {
   background: var(--complementary-color);
+  padding: calc(var(--padding) * 0.6);
+  margin: var(--margin);
 }
 
 /* Title widget */
