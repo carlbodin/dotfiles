@@ -1,27 +1,27 @@
 {
     "label": "suspend",
-    "text" : "",
+    "text" : "󰤄",
     "action": "systemctl suspend",
     "keybind": "h"
 }
 
 {
-    "label": "shutdown",
-    "text" : "",
-    "action": "systemctl poweroff || loginctl poweroff",
-    "keybind": "s"
+    "label": "logout",
+    "text" : "󰍃",
+    "action" : "hyprctl dispatch exit",
+    "keybind": "l"
 }
 
 {
     "label": "reboot",
-    "text" : "",
+    "text" : "󰜉",
     "action": "systemctl reboot || loginctl reboot",
     "keybind": "r"
 }
 
 {
-    "label": "logout",
-    "text" : "",
-    "action" : "hyprctl dispatch exit",
-    "keybind": "l"
+    "label": "shutdown",
+    "text" : "󰐥",
+    "action": "systemctl poweroff || loginctl poweroff",
+    "keybind": "s"
 }
