@@ -50,7 +50,7 @@ reload_services() {
 
 main() {
     # Show menu and get selection
-    choice=$(menu | wofi --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
+    choice=$(menu | wofi --conf ~/.config/wofi/config_select_wallpaper --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
     
     if [ -z "$choice" ]; then
         echo "No wallpaper selected. Exiting."

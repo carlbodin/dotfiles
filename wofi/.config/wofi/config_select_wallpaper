@@ -1,0 +1,29 @@
+# Documentation: https://man.archlinux.org/man/wofi.5.en
+# Don't comment on setting lines, it will break the setting making it run default.
+
+[config]
+# Appearance
+width=1050px
+height=625px
+location=center
+orientation=vertical
+allow_images=true
+image_size=300
+content_halign=center
+columns=3
+hide_scroll=true
+
+# Search
+show=drun
+prompt=Search
+# matching=fuzzy
+insensitive=true
+allow_markup=false
+sort_order=default
+
+# Behavior
+term=kitty
+close_on_focus_loss=true
+single_click=true
+no_actions=true
+key_expand=Tab
