@@ -10,71 +10,53 @@
 ## style-1   style-2   style-3   style-4   style-5
 ## style-6   style-7   style-8   style-9   style-10
 
-# Current Theme
+# Kill rofi if it's running.
+if pgrep -x "rofi" > /dev/null; then
+    pkill -x rofi
+    exit 0
+fi
+
+# Set theme.
 dir="$HOME/.config/rofi/powermenu"
 theme='style-2'
 
-# CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
-
-# Options
+# Buttons.
 shutdown='󰐥'    # nf-md-power
 reboot='󰜉'      # nf-md-restart
 lock='󰌾'       # nf-md-lock
 suspend='󰤄'     # nf-md-power_sleep
 logout='󰍃'      # nf-md-logout
-yes=''
-no=''
 
-# Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "Uptime: $uptime" \
-		-mesg "Uptime: $uptime" \
 		-config ${dir}/config.rasi \
 		-theme ${dir}/${theme}.rasi
 }
 
 
-# Pass variables to rofi dmenu
+# Pass button variables to rofi dmenu.
 run_rofi() {
 	echo -e "$suspend\n$shutdown\n$reboot\n$logout" | rofi_cmd
 }
 
-# Execute Command
-run_cmd() {
-	if [[ $1 == '--shutdown' ]]; then
-		systemctl poweroff
-	elif [[ $1 == '--reboot' ]]; then
-		systemctl reboot
-	elif [[ $1 == '--lock' ]]; then
-		loginctl lock-session
-	elif [[ $1 == '--suspend' ]]; then
-		mpc -q pause
-		amixer set Master mute
-		systemctl suspend
-	elif [[ $1 == '--logout' ]]; then
-		gnome-session-quit --logout --no-prompt
-	fi
-}
-
-# Actions
+# Map button to command.
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-		run_cmd --shutdown
+		systemctl poweroff
         ;;
     $reboot)
-		run_cmd --reboot
+		systemctl reboot
         ;;
     $lock)
-		run_cmd --lock
+		loginctl lock-session
         ;;
     $suspend)
-		run_cmd --suspend
+		mpc -q pause
+		amixer set Master mute
+		systemctl suspend
         ;;
     $logout)
-		run_cmd --logout
+		gnome-session-quit --logout --no-prompt
         ;;
 esac
