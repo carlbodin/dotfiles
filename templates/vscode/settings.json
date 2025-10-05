@@ -56,7 +56,7 @@
   },
 
   "C_Cpp.intelliSenseEngine": "disabled", // Disable for MS C++ extension when using clangd.
-  "clangd.path": "c:\\Users\\username\\AppData\\Roaming\\Code\\User\\globalStorage\\llvm-vs-code-extensions.vscode-clangd\\install\\19.1.2\\clangd_19.1.2\\bin\\clangd.exe",
+  "clangd.path": "",
 
   //=======================================
   //        Telemetry - Privacy
