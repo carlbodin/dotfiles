@@ -1,94 +1,261 @@
-# Dotfiles
+# Arch Hyprland Dotfiles
 
-This repo contains stowable dotfiles, templates, and installation guides to share
-between devices.
+<img src="preview/kitty_fastfetch_pipes_cava.jpg" alt="Alt text" width="410"><img src="preview/waybar_swaync_wofi.jpg" alt="Alt text" width="410">
+<img src="preview/sddm.jpg" alt="Alt text" width="410"><img src="preview/wlogout.jpg" alt="Alt text" width="410">
 
-## Stow
+## Content
 
-The following configs are stowable with GNU `stow`.
+- Stowable dotfiles, see `stow_guide.md` if this does not tell you anything.
+- Bash utility scripts for stow. Placed in project root. Please read them carefully
+  before use!
+- Templates for some software settings.
+- README Preview images.
 
-```bash
-- bash
-- bash_desktop  # local desktop
-- bash_rpi4  # local rpi4
-- git
-- hypridle
-- hyprland
-- hyprlock
-- hyprpaper
-- kitty
-- pywal
-- rofi-wayland
-- starship
-- swaync
-- tmux
-- wallpaper
-- waybar
-- wlogout
-- wofi
-```
+## Getting Started
 
-### Installation
+- Backup your current dotfiles. You can use my script `backup-local-dotfiles.sh`, if you
+  dare, to copy relevant files to `~/.local-dotfiles-backup`.
+- Start with the `hyprland.conf`. Make sure the monitors are correctly configured, your
+  monitor setup and resolution may differ from mine. If you mouse is slow, increase the
+  `sensitivity` value under the `input` block.
+- See Hyprland binds in `~/.config/hypr/hyprland.conf` for how I control my Window
+  manager.
+- Hardcoded absolute paths with username. `/home/carl` --> `/home/username`.
+- Many program configs are dependent on the pywal generated cache files. Make sure to
+  stow pywal and run it. `wal -i /path/to/wallpaper -nt` or use my wallpaper script
+  `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the
+  configs.
 
-Install with pacman.
+## Base System Software
+
+arch linux wayland wayland-protocols hyprland
 
 ```bash
-sudo pacman -S stow
+# System
+sudo pacman -S --needed linux-firmware pacman-contrib polkit openssh ufw qt5-wayland qt6-wayland wget curl xdg-desktop-portal-hyprland xdg-utils xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
+# Programs
+sudo pacman -S nautilus yazi firefox swayimg ffmpeg baobab spotify gimp vlc
+# Font
+sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
+# Situational
+sudo pacman -S fzf stow tmux ntfs-3g
+# For fun
+sudo pacman -S cava fastfetch pastel steam  # Steam: Remember to enable pacman multilib.
+
+# AUR
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -r yay
+# System
+yay -S wlogout
+# Programs
+yay -S visual-studio-code-bin local-send discord heroic-games-launcher-bin caprine
+# For fun
+yay -S pipes.sh python-pywal python-pywalfox
 ```
 
-Place the dotfiles repository in your user's home folder for stow to work, unless you
-want to use custom paths for source and target directories.
+## Window Manager Software
+
+```
+sddm, theme: https://gitlab.com/Matt.Jolly/sddm-eucalyptus-drop/
+
+hyprland
+hyprpaper
+hyprlock
+hypridle
+hyprshot
+hyprpicker
+
+wofi (or rofi-wayland)
+waybar
+wlogout (Power menu, `yay -S wlogout`.)
+swaync
+wl-clipboard
+brightnessctl
+
+Bluetooth stack: bluez blueman
+bluez: bluetooth low-level control
+blueman: gui that uses bluez
+
+Internet stack: iwd NetworkManager
+iwd: low level control, authentication and protocols
+NetworkManager: higher level control, connecting ethernet wifi vpn, passwords, ip config, nmcli
+
+Sound stack: pipewire pavucontrol
+pipewire: low level control, modern, low-latency, and secure
+pavucontrol: gui (orig pulseaudio but pipewire has compatibility layer)
+
+polkit (Authentication software, used in my select_wallpaper.sh script.)
+firewall: ufw (load iptables kernel modules, set rules and enable ufw)
+fstrim: trim ssd (`sudo systemctl enable fstrim.timer`, `sudo systemctl start fstrim.timer`)
+fastfetch
+```
+
+## Utility Apps
+
+```
+file manager: yazi / nautilus
+web browser: firefox
+image viewer: swayimg / feh
+disk usage analyzer: baobab
+
+vscode official (`yay -S visual-studio-code-bin`)
+fzf
+tmux
+
+gimp
+vlc
+ffmpeg
+libreoffice / openoffice
+pastel (Color palette generation software run in terminal.)
+
+spotify
+caprine, see AUR
+local-send (`yay -S local-send`, `sudo ufw allow 53317`)
+```
+
+## Ricing Software
+
+```
+stow
+sudo pacman -S ttf-jetbrains-mono-nerd && fc-cache -fv
+pywal (Color themes from the wallpaper, install with `sudo pacman -S python-pywal`, themes are in `~/.cache/wal/`.)
+pywalfox (Both on system from yay `yay -S python-pywalfox` and as extension in Firefox. After installation, enter extension and press "Fetch theme".)
+cava (Frequency bar visualizer. Install from pacman.)
+pipes.sh (Pipe terminal colors visualization script. Install from yay.)
+starship, also install and use the "font_family CaskadyaCove Nerd Font Mono"
+```
+
+### Icons
+
+Install icon theme packages.
 
 ```bash
-cd && git clone git@github.com:carlbodin/dotfiles.git
+sudo pacman -S adwaita-icon-theme
+ls /usr/share/icons
 ```
 
-### Usage
+Alternatively:
 
-`cd` into the repo and then `stow` + `name of the config`. The `name of the config` must
-be the name of a folder on the path, unless other is explicitly stated. E.g. `bash` in
-the root of this project:
+1. Download themes from `kdestore`, `pling`, or `GitHub`.
+2. Extract the folder and place in `/usr/share/icons`.
+3. Change the owner to root `sudo chown -R root:root icon-pack-folder-name`.
+
+Set them using `gsettings` from the `glib2` package.
 
 ```bash
-stow bash
+sudo pacman -S glib2
+gsettings set org.gnome.desktop.interface icon-theme Adwaita
 ```
 
-`Stow` will now create a symlink of the dotfile config that points to the dotfile in the
-repo. Subdirectories are created if needed.
+### SDDM Themes
 
-To delete the symlink and `unstow` the dotfile, run the following. Subdirectories
-created by `stow` in the stowing process will be deleted too, if empty.
+1. Download themes from `kdestore`, `pling`, or `GitHub`.
+2. Extract the folder and place in `/usr/share/sddm/themes`.
+3. Change the owner to root `sudo chown -R root:root theme-folder-name`.
+4. Point to them in the `/etc/sddm.conf`.
 
 ```bash
-stow -D bash
+[Theme]
+Current=theme-name
 ```
 
-The folder structure in the repo is built in a way that enables smooth and modular
-stowing. Each config is separate, and their folder structure tells `stow` how to create
-subdirectories and place the symlink pointing to the repo config.
+### Nautilus Theme
 
-To work around this default behavior, and enable configs in other places of the file
-system, use source and target directories when running `stow`.
+Nautilus has changed default from the customizable `gtk-X.0` into `libadwaita`, which
+can only be light or dark. Use another file manager like `Thunar` or `Dolphin` for more
+customiability.
 
 ```bash
-stow -S -d /path/to/repo/dotfiles -t /path/where/to/place/symlink bash
+sudo pacman -S dconf
+dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
 ```
 
-### More behaviors
+### Make Specific Window Semi-Transparent and Blurred
 
-If the dotfile is already stowed, `stow` will do nothing.
+Run this command to get the name of the currently running apps.
 
-If an original dotfile is at the target path, `stow` will yield a warning.
+```bash
+hyprctl clients
+```
 
-> WARNING! stowing bash would cause conflicts: \* cannot stow dotfiles/bash/.bashrc over
-> existing target .bashrc since neither a link nor a directory and --adopt not specified
-> All operations aborted.
+Use this name to make its background semi-transparent, which Hyprland then blurs for
+you.
 
-In case `bash` is not on the path, `stow` will yield an error.
+```bash
+windowrulev2 = opacity 0.95, class:(Spotify)
+```
 
-> stow: ERROR: The stow directory `/wrong/path` does not contain package bash
+### Control Your Startup Time
 
-### Scripts
+Run this to find your startup time.
+
+```bash
+systemd-analyze
+```
+
+Process by process.
+
+```bash
+systemd-analyze blame
+```
+
+Find possible culprit and disable their autostart, or uninstall them.
+
+```bash
+sudo systemctl disable wpa_supplicant  # Given you are using iwd instead.
+```
+
+## Games
+
+Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
+file.
+
+Heroic Games Launcher: `yay heroic-games-launcher-bin`.
+
+Discord, see AUR.
+
+## Add Custom Binaries to App Launchers
+
+Add a symlink in `~/.local/bin` to your binary.
+
+```bash
+mkdir -p ~/.local/bin
+
+ln -s ~/git/Cemu/bin/Cemu_release ~/.local/bin/cemu
+
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+```
+
+Add desktop entry file to `~/.local/share/applications` and make it executable.
+
+```bash
+nano ~/.local/share/applications/cemu.desktop
+
+chmod +x ~/.local/share/applications/cemu.desktop
+```
+
+```bash
+[Desktop Entry]
+Name=Cemu
+Comment=Wii U Emulator
+Exec=/home/username/.local/bin/cemu
+Icon=/absolute/path/to/icon.ico
+Terminal=false
+Type=Application
+Categories=Game;Emulator;
+Keywords=wii;wiiu;emulator;nintendo;
+StartupNotify=true
+```
+
+For keywords, use your own search words. For categories, see freedesktop.org's
+[registry](https://specifications.freedesktop.org/menu-spec/latest/category-registry.html).
+
+If you run into errors, run this command to validate the entry.
+
+```bash
+desktop-file-validate ~/.local/share/applications/cemu.desktop
+```
+
+## Scripts
 
 These scripts are available.
 
@@ -99,21 +266,6 @@ These scripts are available.
 ```
 
 The local bashrc versions, `penguin` and `rpi4`, are not included in `stow-all.sh`.
-
-## Templates
-
-Templates on how to write configuration files.
-
-```bash
-- fstab  # The `/etc/fstab` config.
-- sddm  # Simple Desktop Display Manager config, and theme paths.
-- ssh  # The `config` and `authorized_keys` files.
-- vscode  # User settings, extensions, and extension configs.
-```
-
-## Arch Hyprland Setup
-
-In `arch_hyprland_setup.md`, there are notes on how I setup `hyprland` on arch linux.
 
 ## Add Default Apps
 
