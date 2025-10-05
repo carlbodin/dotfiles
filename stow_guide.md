@@ -11,7 +11,6 @@ The following configs are stowable with GNU `stow`.
 - bash
 - bash_desktop  # local desktop
 - bash_rpi4  # local rpi4
-- git
 - hypridle
 - hyprland
 - hyprlock

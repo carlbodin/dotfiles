@@ -28,7 +28,7 @@
 
 ## Base System Software
 
-arch linux wayland wayland-protocols hyprland
+Install commands for the base system software and some nice to have applications.
 
 ```bash
 # System
@@ -54,8 +54,10 @@ yay -S pipes.sh python-pywal python-pywalfox
 
 ## Window Manager Software
 
+Overview of the system in text.
+
 ```
-sddm, theme: https://gitlab.com/Matt.Jolly/sddm-eucalyptus-drop/
+sddm
 
 hyprland
 hyprpaper
@@ -89,7 +91,7 @@ fstrim: trim ssd (`sudo systemctl enable fstrim.timer`, `sudo systemctl start fs
 fastfetch
 ```
 
-## Utility Apps
+### Utility Apps
 
 ```
 file manager: yazi / nautilus
@@ -112,7 +114,7 @@ caprine, see AUR
 local-send (`yay -S local-send`, `sudo ufw allow 53317`)
 ```
 
-## Ricing Software
+### Ricing Software
 
 ```
 stow
@@ -123,6 +125,29 @@ cava (Frequency bar visualizer. Install from pacman.)
 pipes.sh (Pipe terminal colors visualization script. Install from yay.)
 starship, also install and use the "font_family CaskadyaCove Nerd Font Mono"
 ```
+
+### Games
+
+Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
+file.
+
+Heroic Games Launcher: `yay heroic-games-launcher-bin`.
+
+Discord, see AUR.
+
+## Scripts
+
+These scripts are available.
+
+```bash
+- backup-local-dotfiles.sh  # Save existing dotfiles to folder.
+- stow-all.sh  # Stow "all" dotfiles.
+- unstow-all.sh  # Remove stowed dotfiles.
+```
+
+The local bashrc versions, `penguin` and `rpi4`, are not included in `stow-all.sh`.
+
+## General Customization Guides
 
 ### Icons
 
@@ -204,16 +229,7 @@ Find possible culprit and disable their autostart, or uninstall them.
 sudo systemctl disable wpa_supplicant  # Given you are using iwd instead.
 ```
 
-## Games
-
-Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
-file.
-
-Heroic Games Launcher: `yay heroic-games-launcher-bin`.
-
-Discord, see AUR.
-
-## Add Custom Binaries to App Launchers
+### Add Custom Binaries to App Launchers
 
 Add a symlink in `~/.local/bin` to your binary.
 
@@ -255,30 +271,18 @@ If you run into errors, run this command to validate the entry.
 desktop-file-validate ~/.local/share/applications/cemu.desktop
 ```
 
-## Scripts
-
-These scripts are available.
-
-```bash
-- backup-local-dotfiles.sh  # Save existing dotfiles to folder.
-- stow-all.sh  # Stow "all" dotfiles.
-- unstow-all.sh  # Remove stowed dotfiles.
-```
-
-The local bashrc versions, `penguin` and `rpi4`, are not included in `stow-all.sh`.
-
-## Add Default Apps
+### Add Default Apps
 
 If you want to establish default apps for specific file types, you can either use
 `Nautilus GUI` or `xdg-mime` in the terminal.
 
-### Nautilus GUI
+#### Nautilus GUI
 
 1. Right click on file.
 2. Choose `Open With...`
 3. Select your app, turn on the toggle `Always use for this file type`, and then `Open`.
 
-### xdg-mime
+#### xdg-mime
 
 Say you want to add `swayimg` as default for the JPEG file type.
 
