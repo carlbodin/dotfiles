@@ -13,4 +13,4 @@
         su = submodule update --recursive --init
         last = log -1 HEAD
         siiu = push --force-with-lease --no-verify
-        ria = rebase -i --autosquash
+        ria = rebase -i --autosquash --autostash
