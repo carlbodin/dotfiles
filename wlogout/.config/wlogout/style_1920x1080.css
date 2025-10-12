@@ -24,7 +24,7 @@ button {
 }
 
 button:focus {
-  background-color: alpha(#ffffff, 0.3);
+  background-color: alpha(@color9, 0.4);
   transition: 40ms cubic-bezier(0, 0, 1, 1);
 }
 
