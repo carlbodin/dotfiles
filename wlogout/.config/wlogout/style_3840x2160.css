@@ -12,6 +12,7 @@ window {
 
 button {
   background-color: alpha(@color9, 0.95);
+  color: whitesmoke;
   outline-style: none;
   border: none;
   border-width: 0px;
