@@ -1,0 +1,187 @@
+* {
+  all: unset;
+  font-size: 14px;
+  font-family: "JetBrainsMono Nerd Font";
+}
+window#waybar {
+  background: alpha(gray, 0.25);
+  border-radius: 24px;
+  margin: 0px 100px 0px 100px;
+}
+.modules-left {
+  padding: 0px;
+  margin: 6px 0px 6px 6px;
+  border-radius: 20px;
+  background: alpha(gray, 0);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+}
+.modules-center {
+  padding: 7px;
+  margin: 6px 0px 6px 0px;
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+.modules-right {
+  padding: 0px;
+  margin: 6px 6px 6px 0px;
+  border-radius: 20px;
+  background: alpha(gray, 0);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0);
+}
+tooltip {
+  border-radius: 7px;
+  background: alpha(gray, 0.4);
+  color: whitesmoke;
+}
+#workspaces {
+  padding: 0px 5px;
+}
+#workspaces button {
+  all: unset;
+  padding: 0px 5px;
+  color: alpha(white, 0.3);
+  transition: all 0.2s ease;
+}
+#workspaces button:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.65);
+  transition: all 0.5s ease;
+}
+#workspaces button.active {
+  color: #aaaaaa;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+#workspaces button.empty {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.4);
+}
+#workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.65);
+  transition: all 0.5s ease;
+}
+#workspaces button.empty.active {
+  color: #aaaaaa;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+}
+#clock,
+#custom-notification,
+#idle_inhibitor,
+#custom-colorpicker,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery {
+  padding: 0px 15px 0 15px;
+  color: whitesmoke;
+}
+#clock:hover,
+#custom-notification:hover,
+#idle_inhibitor:hover,
+#custom-colorpicker:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover {
+  transition: all 0.2s ease;
+  color: gray;
+}
+#custom-notification {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 18px 0px 12px;
+  border-radius: 20px;
+  background: alpha(gray, 0.3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+}
+#clock {
+  border-radius: 20px;
+  background: alpha(gray, 0.3);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+}
+
+#tray {
+  padding: 0px 15px 0px 15px;
+  transition: all 0.2s ease;
+  color: #333333;
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+}
+
+#tray menu {
+  background: alpha(gray, 0.2);
+  color: #333333;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+#tray menu menuitem,
+#tray menu * {
+  background: transparent;
+  padding: 0px 5px;
+  transition: all 0.07s linear;
+}
+#tray menu menuitem:hover {
+  color: #cccccc;
+  transition: color 0.07s linear;
+}
+
+#tray menu separator {
+  background: alpha(gray, 0.2);
+  padding: 0px 5px;
+  transition: all 0.2s ease;
+}
+
+#1 {
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+#idle_inhibitor {
+  padding: 0px 15px 0px 10px;
+}
+#custom-colorpicker {
+  padding: 0px 10px 0px 15px;
+}
+
+#connections {
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+#network {
+  padding: 0px 23px 0px 0px;
+}
+
+#pulseaudio {
+  padding: 0px 15px 0px 15px;
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+
+#battery {
+  padding: 0px 15px 0px 15px;
+  border-radius: 20px;
+  background: alpha(gray, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+#battery.charging {
+  color: #26a65b;
+}
+#battery.warning:not(.charging) {
+  color: #ffbe61;
+}
+#battery.critical:not(.charging) {
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
