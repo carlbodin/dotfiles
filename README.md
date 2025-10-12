@@ -5,7 +5,7 @@
 
 ## Content
 
-- Stowable dotfiles, see `stow_guide.md` if this does not tell you anything.
+- Stowable dotfiles, see `docs/stow.md` if this does not tell you anything.
 - Bash utility scripts for stow. Placed in project root. Please read them carefully
   before use!
 - Templates for some software settings.
@@ -26,35 +26,61 @@
   `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the
   configs.
 
+1. Use pacman to install "System base" and "Window manager" packages listed below.
+2. Install `yay`, or your helper of choice, to allow AUR downloads.
+3. Use `yay` to install `wlogout` and `pywal`.
+4. Clone this repo to your home folder,
+   `git clone --depth 1 https://github.com/carlbodin/dotfiles`.
+5. Use `stow` to setup configurations for all apps, see guide in `docs/stow.md`. You can
+   use my `backup-local-dotfiles.sh` script to backup eventual local copies of the
+   relevant dotfiles. Hyprland's config `~/.config/hypr/hyprland.conf` already exists,
+   so that needs to be removed prior to stowing. You can always find their default
+   config [here](https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf). It
+   is a bit tricky to work with `~/.config/hypr/hyprland.conf`, since it reloads on
+   save. If you run into problems where it seems to not reload properly, run
+   `hyprctl reload`.
+6. Install the rest of the packages in which ever order you would like. I recommend this
+   order because of some nested dependencies I have with background images and pywal
+   color palettes for many of my programs.
+7. Extra configuration options in `docs/configuration.md`. Happy ricing!
+
 ## Base System Software
 
 Install commands for the base system software and some nice to have applications.
 
 ```bash
-# System
-sudo pacman -S --needed linux-firmware pacman-contrib polkit openssh ufw qt5-wayland qt6-wayland wget curl xdg-desktop-portal-hyprland xdg-utils xdg-desktop-portal-gtk dconf glib2 nano kitty wayland wayland-protocols sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker wofi waybar swaync wl-clipboard brightnessctl bluez blueman iwd NetworkManager pipewire pavucontrol tree git
-# Programs
-sudo pacman -S nautilus yazi firefox swayimg ffmpeg baobab spotify gimp vlc
-# Font
+# System base
+sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire
+# Window manager
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty nautilus wofi waybar swaync wl-clipboard brightnessctl pavucontrol nm-connection-editor blueman
+# I always install
+sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw
+# Utility
+sudo pacman -S vlc gimp spotify btop starship ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
+# Development
+sudo pacman -S docker tmux
+# Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
-# Situational
-sudo pacman -S fzf stow tmux ntfs-3g
-# For fun
-sudo pacman -S cava fastfetch pastel steam  # Steam: Remember to enable pacman multilib.
 
-# AUR
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -r yay
+# YAY and AUR
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -r yay
 # System
-yay -S wlogout
-# Programs
-yay -S visual-studio-code-bin local-send discord heroic-games-launcher-bin caprine
-# For fun
-yay -S pipes.sh python-pywal python-pywalfox
+yay -S wlogout python-pywal
+# Utility
+yay -S localsend discord
+# Development
+yay -S visual-studio-code-bin
+# Ricing
+yay -S python-pywalfox
+# Games
+yay -S heroic-games-launcher-bin
 ```
 
 ## Window Manager Software
 
 Overview of the system in text.
+
+#### Window Manager
 
 ```
 sddm
@@ -72,36 +98,53 @@ wlogout (Power menu, `yay -S wlogout`.)
 swaync
 wl-clipboard
 brightnessctl
+```
 
-Bluetooth stack: bluez blueman
+#### Bluetooth stack
+
+```
 bluez: bluetooth low-level control
 blueman: gui that uses bluez
+```
 
-Internet stack: iwd NetworkManager
-iwd: low level control, authentication and protocols
-NetworkManager: higher level control, connecting ethernet wifi vpn, passwords, ip config, nmcli
+#### Internet stack
 
-Sound stack: pipewire pavucontrol
+```
+iwd: Low level control, authentication, and protocols.
+NetworkManager: Higher level control, connecting ethernet wifi vpn, passwords, ip config, nmcli.
+```
+
+#### Sound stack
+
+Use compatibility layer for pulseaudio.
+
+```
 pipewire: low level control, modern, low-latency, and secure
 pavucontrol: gui (orig pulseaudio but pipewire has compatibility layer)
+```
 
+#### Other System Tools
+
+```
 polkit (Authentication software, used in my select_wallpaper.sh script.)
 firewall: ufw (load iptables kernel modules, set rules and enable ufw)
 fstrim: trim ssd (`sudo systemctl enable fstrim.timer`, `sudo systemctl start fstrim.timer`)
-fastfetch
 ```
 
 ### Utility Apps
 
 ```
-file manager: yazi / nautilus
+file manager: nautilus
 web browser: firefox
 image viewer: swayimg / feh
 disk usage analyzer: baobab
 
 vscode official (`yay -S visual-studio-code-bin`)
 fzf
+htop
+btop
 tmux
+fastfetch
 
 gimp
 vlc
@@ -111,19 +154,20 @@ pastel (Color palette generation software run in terminal.)
 
 spotify
 caprine, see AUR
-local-send (`yay -S local-send`, `sudo ufw allow 53317`)
+localsend (`yay -S localsend`, `sudo ufw allow 53317`)
 ```
 
 ### Ricing Software
 
+JetBrainsMono Font: `sudo pacman -S ttf-jetbrains-mono-nerd && fc-cache -fv`.
+
 ```
 stow
-sudo pacman -S ttf-jetbrains-mono-nerd && fc-cache -fv
 pywal (Color themes from the wallpaper, install with `sudo pacman -S python-pywal`, themes are in `~/.cache/wal/`.)
 pywalfox (Both on system from yay `yay -S python-pywalfox` and as extension in Firefox. After installation, enter extension and press "Fetch theme".)
+starship, also install and use the "font_family CaskadyaCove Nerd Font Mono"
 cava (Frequency bar visualizer. Install from pacman.)
 pipes.sh (Pipe terminal colors visualization script. Install from yay.)
-starship, also install and use the "font_family CaskadyaCove Nerd Font Mono"
 ```
 
 ### Games
@@ -146,157 +190,3 @@ These scripts are available.
 ```
 
 The local bashrc versions, `penguin` and `rpi4`, are not included in `stow-all.sh`.
-
-## General Customization Guides
-
-### Icons
-
-Install icon theme packages.
-
-```bash
-sudo pacman -S adwaita-icon-theme
-ls /usr/share/icons
-```
-
-Alternatively:
-
-1. Download themes from `kdestore`, `pling`, or `GitHub`.
-2. Extract the folder and place in `/usr/share/icons`.
-3. Change the owner to root `sudo chown -R root:root icon-pack-folder-name`.
-
-Set them using `gsettings` from the `glib2` package.
-
-```bash
-sudo pacman -S glib2
-gsettings set org.gnome.desktop.interface icon-theme Adwaita
-```
-
-### SDDM Themes
-
-1. Download themes from `kdestore`, `pling`, or `GitHub`.
-2. Extract the folder and place in `/usr/share/sddm/themes`.
-3. Change the owner to root `sudo chown -R root:root theme-folder-name`.
-4. Point to them in the `/etc/sddm.conf`.
-
-```bash
-[Theme]
-Current=theme-name
-```
-
-### Nautilus Theme
-
-Nautilus has changed default from the customizable `gtk-X.0` into `libadwaita`, which
-can only be light or dark. Use another file manager like `Thunar` or `Dolphin` for more
-customiability.
-
-```bash
-sudo pacman -S dconf
-dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-```
-
-### Make Specific Window Semi-Transparent and Blurred
-
-Run this command to get the name of the currently running apps.
-
-```bash
-hyprctl clients
-```
-
-Use this name to make its background semi-transparent, which Hyprland then blurs for
-you.
-
-```bash
-windowrulev2 = opacity 0.95, class:(Spotify)
-```
-
-### Control Your Startup Time
-
-Run this to find your startup time.
-
-```bash
-systemd-analyze
-```
-
-Process by process.
-
-```bash
-systemd-analyze blame
-```
-
-Find possible culprit and disable their autostart, or uninstall them.
-
-```bash
-sudo systemctl disable wpa_supplicant  # Given you are using iwd instead.
-```
-
-### Add Custom Binaries to App Launchers
-
-Add a symlink in `~/.local/bin` to your binary.
-
-```bash
-mkdir -p ~/.local/bin
-
-ln -s ~/git/Cemu/bin/Cemu_release ~/.local/bin/cemu
-
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-```
-
-Add desktop entry file to `~/.local/share/applications` and make it executable.
-
-```bash
-nano ~/.local/share/applications/cemu.desktop
-
-chmod +x ~/.local/share/applications/cemu.desktop
-```
-
-```bash
-[Desktop Entry]
-Name=Cemu
-Comment=Wii U Emulator
-Exec=/home/username/.local/bin/cemu
-Icon=/absolute/path/to/icon.ico
-Terminal=false
-Type=Application
-Categories=Game;Emulator;
-Keywords=wii;wiiu;emulator;nintendo;
-StartupNotify=true
-```
-
-For keywords, use your own search words. For categories, see freedesktop.org's
-[registry](https://specifications.freedesktop.org/menu-spec/latest/category-registry.html).
-
-If you run into errors, run this command to validate the entry.
-
-```bash
-desktop-file-validate ~/.local/share/applications/cemu.desktop
-```
-
-### Add Default Apps
-
-If you want to establish default apps for specific file types, you can either use
-`Nautilus GUI` or `xdg-mime` in the terminal.
-
-#### Nautilus GUI
-
-1. Right click on file.
-2. Choose `Open With...`
-3. Select your app, turn on the toggle `Always use for this file type`, and then `Open`.
-
-#### xdg-mime
-
-Say you want to add `swayimg` as default for the JPEG file type.
-
-```bash
-xdg-mime default swayimg.desktop image/jpg
-```
-
-What happens is that an entry is added to the `~/.config/mimeapps.list`.
-
-```bash
-...
-[Default Applications]
-image/jpeg=swayimg.desktop
-image/png=swayimg.desktop
-image/gif=swayimg.desktop
-...
-```
