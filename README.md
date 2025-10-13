@@ -54,26 +54,20 @@ sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-uti
 # Window manager
 sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty nautilus wofi waybar swaync wl-clipboard brightnessctl pavucontrol nm-connection-editor blueman
 # I always install
-sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw
+sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw man-db
 # Utility
-sudo pacman -S vlc gimp spotify btop starship ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
-# Development
-sudo pacman -S docker tmux
+sudo pacman -S docker tmux btop starship ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
+# Programs
+sudo pacman -S vlc gimp spotify
 # Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
 
 # YAY and AUR
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -r yay
 # System
-yay -S wlogout python-pywal
-# Utility
-yay -S localsend discord
-# Development
-yay -S visual-studio-code-bin
-# Ricing
-yay -S python-pywalfox
-# Games
-yay -S heroic-games-launcher-bin
+yay -S wlogout
+# Programs
+yay -S visual-studio-code-bin discord localsend heroic-games-launcher-bin
 ```
 
 ## Window Manager Software
@@ -83,15 +77,16 @@ Overview of the system in text.
 #### Window Manager
 
 ```
-sddm
-
 hyprland
 hyprpaper
 hyprlock
 hypridle
 hyprshot
 hyprpicker
+```
 
+```
+sddm
 wofi (or rofi-wayland)
 waybar
 wlogout (Power menu, `yay -S wlogout`.)
@@ -139,13 +134,25 @@ web browser: firefox
 image viewer: swayimg / feh
 disk usage analyzer: baobab
 
-vscode official (`yay -S visual-studio-code-bin`)
 fzf
 htop
 btop
 tmux
 fastfetch
+man (pacman man-db)
+```
 
+For fun.
+
+```
+cowsay
+fortune (pacman fortune-mod)
+```
+
+### Programs
+
+```
+vscode official (`yay -S visual-studio-code-bin`)
 gimp
 vlc
 ffmpeg
