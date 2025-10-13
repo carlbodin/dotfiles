@@ -51,5 +51,12 @@ alias pss='ps -aux | grep'
 alias fz='fzf --preview "cat {}" | xargs -r code'
 alias po='sudo udisksctl power-off -b'  # Power off block device.
 
-# Set up fzf key bindings and fuzzy completion.
-eval "$(fzf --bash)"
+# Set up fzf key bindings and fuzzy completion
+if command -v fzf >/dev/null 2>&1; then
+  eval "$(fzf --bash)"
+fi
+
+# Set up zoxide (smart cd)
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
