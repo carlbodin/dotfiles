@@ -1,5 +1,6 @@
-README.md
-bash_*
-docs/
-templates/
-preview/
+^.*\.md$
+bash_desktop
+bash_rpi4
+docs
+templates
+preview

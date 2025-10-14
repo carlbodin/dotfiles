@@ -52,3 +52,9 @@ Command to preview a modified theme without logging out.
 ```bash
 sddm-greeter-qt6 --test-mode --theme /usr/share/sddm/themes/sddm-eucalyptus-drop
 ```
+
+## Stow SDDM Config
+
+```bash
+stow -d ~/dotfiles/templates -t / sddm
+```

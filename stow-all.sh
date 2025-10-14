@@ -3,9 +3,9 @@
 DOTFILES_DIR="$HOME/dotfiles"
 GLOBAL_IGNORE="$DOTFILES_DIR/.stow-global-ignore"
 
-IGNORE_LIST=("arch_hyprland_install" "templates")
+IGNORE_LIST=()
 if [[ -f "$GLOBAL_IGNORE" ]]; then
-    while IFS= read -r line; do
+    while IFS= read -r line || [[ -n "$line" ]]; do
         [[ -n "$line" ]] && IGNORE_LIST+=("$line")
     done < "$GLOBAL_IGNORE"
 fi
@@ -21,5 +21,6 @@ is_ignored() {
 for folder in "$DOTFILES_DIR"/*/; do
     foldername=$(basename "$folder")
     is_ignored "$foldername" && continue
-    stow -d "$DOTFILES_DIR" -t "$HOME" "$foldername"
+    echo "Stowing $foldername"
+    stow "$foldername"
 done

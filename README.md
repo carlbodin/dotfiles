@@ -48,6 +48,8 @@
 
 Install commands for the base system software and some nice to have applications.
 
+`Pacman` packages:
+
 ```bash
 # System base
 sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire
@@ -61,7 +63,11 @@ sudo pacman -S docker tmux btop starship ntfs-3g tree steam  # Steam: Remember t
 sudo pacman -S vlc gimp spotify
 # Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
+```
 
+`AUR` packages:
+
+```bash
 # YAY and AUR
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -r yay
 # System
