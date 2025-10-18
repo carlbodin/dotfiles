@@ -58,7 +58,7 @@ sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kit
 # I always install
 sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw man-db
 # Utility
-sudo pacman -S docker tmux btop starship ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
+sudo pacman -S docker tmux btop starship fd ripgrep zoxide ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
 # Programs
 sudo pacman -S vlc gimp spotify
 # Fonts
@@ -145,6 +145,9 @@ htop
 btop
 tmux
 fastfetch
+fd (file and folder search)
+ripgrep (file content search)
+zoxide (smart cd)
 man (pacman man-db)
 ```
 
