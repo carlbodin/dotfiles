@@ -42,9 +42,9 @@ sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kit
 # I always install
 sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw man-db
 # Utility
-sudo pacman -S docker tmux btop starship fd ripgrep zoxide ntfs-3g tree steam  # Steam: Remember to enable pacman multilib.
-# Programs
-sudo pacman -S vlc gimp spotify
+sudo pacman -S docker tmux btop starship fd ripgrep zoxide ntfs-3g tree wf-recorder
+# Apps
+sudo pacman -S vlc gimp spotify steam  # Steam: Remember to enable pacman multilib.
 # Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
 ```
@@ -56,7 +56,7 @@ sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -r yay
 # System
 yay -S wlogout
-# Programs
+# Apps
 yay -S visual-studio-code-bin discord localsend heroic-games-launcher-bin
 ```
 
@@ -139,6 +139,7 @@ fd (file and folder search)
 ripgrep (file content search)
 zoxide (smart cd)
 man (pacman man-db)
+wf-recorder (Wayland screenrecorder: `wf-recorder -f output.mp4`)
 pastel (Color palette generation software run in terminal.)
 ```
 
