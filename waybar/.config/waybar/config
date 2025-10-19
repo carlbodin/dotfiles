@@ -1,7 +1,7 @@
 {
   "layer": "bottom",
   "position": "top",
-  "margin": "8 300 0 300",
+  "margin": "8 8 0 8",
   "spacing": 12,
   "reload_style_on_change": true,
   "modules-left": [
