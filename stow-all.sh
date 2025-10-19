@@ -21,6 +21,13 @@ is_ignored() {
 for folder in "$DOTFILES_DIR"/*/; do
     foldername=$(basename "$folder")
     is_ignored "$foldername" && continue
-    echo "Stowing $foldername"
-    stow "$foldername"
+    if [[ "$1" == "--unstow" ]]; then
+        echo "Unstowing $foldername"
+        stow -D "$foldername"
+    else
+        echo "Stowing $foldername"
+        stow "$foldername"
+    fi        
 done
+
+hyprctl reload &> /dev/null

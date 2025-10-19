@@ -3,7 +3,7 @@
 set -euo pipefail
 
 DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.local-dotfiles-backup"
+BACKUP_DIR="$DOTFILES_DIR/local-dotfiles-backup"
 GLOBAL_IGNORE="$DOTFILES_DIR/.stow-global-ignore"
 
 MODE="backup"
@@ -50,17 +50,20 @@ has_symlink_in_path() {
     return 1
 }
 
+let counter=1
+
 if [[ "$MODE" == "backup" ]]; then
     for folder in "$DOTFILES_DIR"/*/; do
         foldername=$(basename "$folder")
         is_ignored "$foldername" && continue
 
-        find "$folder" -type f | while read -r file; do
+        while read -r file; do
             rel_path="${file#$DOTFILES_DIR/$foldername/}"
             real_path="$HOME/$rel_path"
 
             if [[ -e "$real_path" ]] && ! has_symlink_in_path "$real_path"; then
                 backup_path="$BACKUP_DIR/$foldername/$(dirname "$rel_path")"
+                let counter++
                 if [[ "$DRY_RUN" -eq 1 ]]; then
                     echo "Would back up: $real_path → $backup_path/"
                 else
@@ -69,12 +72,16 @@ if [[ "$MODE" == "backup" ]]; then
                     echo "✅ Backed up: $real_path → $backup_path/"
                 fi
             fi
-        done
+        done < <(find "$folder" -type f)
     done
 
     if [[ "$DRY_RUN" -eq 0 && -d "$BACKUP_DIR" ]]; then
         # Clean up any empty dirs
         find "$BACKUP_DIR" -type d -empty -delete
+    fi
+
+    if [[ $counter -eq 1 ]]; then
+        echo "No files to backup. They are all probably symlinks already."
     fi
 
 
