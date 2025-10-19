@@ -1,6 +1,7 @@
 ^.*\.md$
-bash_desktop
-bash_rpi4
+bash-desktop
+bash-rpi4
 docs
+local-dotfiles-backup
 templates
 preview
