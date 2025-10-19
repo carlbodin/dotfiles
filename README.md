@@ -1,7 +1,7 @@
 # Hyprland Dotfiles
 
-<img src="preview/kitty_fastfetch_pipes_cava.jpg" alt="kitty fastfetch pipes cava" width="410"><img src="preview/waybar_swaync_wofi.jpg" alt="waybar swaync wofi" width="410">
-<img src="preview/sddm.jpg" alt="sddm" width="410"><img src="preview/wlogout.jpg" alt="wlogout" width="410">
+<img src="preview/preview1.jpg" alt="preview1" width="410"><img src="preview/preview2.jpg" alt="preview2" width="410">
+<img src="preview/preview3.jpg" alt="preview3" width="410"><img src="preview/preview4.jpg" alt="preview4" width="410">
 
 ## Content
 
