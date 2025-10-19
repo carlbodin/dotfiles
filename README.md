@@ -3,28 +3,21 @@
 <img src="preview/kitty_fastfetch_pipes_cava.jpg" alt="kitty fastfetch pipes cava" width="410"><img src="preview/waybar_swaync_wofi.jpg" alt="waybar swaync wofi" width="410">
 <img src="preview/sddm.jpg" alt="sddm" width="410"><img src="preview/wlogout.jpg" alt="wlogout" width="410">
 
-## Content
+### Content
 
-- Stowable dotfiles, see `docs/stow.md` if this does not tell you anything.
-- Bash utility scripts for stow. Placed in project root. Please read them carefully
-  before use!
-- Templates for some software settings.
-- README Preview images.
+- Stowable dotfiles, see `docs/stow.md` for a guide on this.
+- Stow utility scripts, placed in project root.
+- Templates for some software settings and `/ect`.
+- Archinstall guide, see `docs/archinstall.md`.
+- A general linux configuration guide, see `docs/configuration.md`. E.g., theming,
+  default apps, and shortcuts.
 
-## Getting Started
+### Installation Guide
 
-- Backup your current dotfiles. You can use my script `backup-local-dotfiles.sh`, if you
-  dare, to copy relevant files to `~/.local-dotfiles-backup`.
-- Start with the `hyprland.conf`. Make sure the monitors are correctly configured, your
-  monitor setup and resolution may differ from mine. If you mouse is slow, increase the
-  `sensitivity` value under the `input` block.
-- See Hyprland binds in `~/.config/hypr/hyprland.conf` for how I control my Window
-  manager.
-- Hardcoded absolute paths with username. `/home/carl` --> `/home/username`.
-- Many program configs are dependent on the pywal generated cache files. Make sure to
-  stow pywal and run it. `wal -i /path/to/wallpaper -nt` or use my wallpaper script
-  `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the
-  configs.
+To see the packages go to section [Base System Software](#base-system-software) below.
+
+Backup your current dotfiles. You can use my script `backup-local-dotfiles.sh`, to copy
+relevant files to `~/dotfiles/local-dotfiles-backup/`.
 
 1. Use pacman to install "System base" and "Window manager" packages listed below.
 2. Install `yay`, or your helper of choice, to allow AUR downloads.
@@ -39,10 +32,30 @@
    is a bit tricky to work with `~/.config/hypr/hyprland.conf`, since it reloads on
    save. If you run into problems where it seems to not reload properly, run
    `hyprctl reload`.
-6. Install the rest of the packages in which ever order you would like. I recommend this
-   order because of some nested dependencies I have with background images and pywal
-   color palettes for many of my programs.
-7. Extra configuration options in `docs/configuration.md`. Happy ricing!
+6. Install the rest of the packages in which ever order you like. I recommend this order
+   because of some nested dependencies I have with background images and pywal color
+   palettes for multiple programs.
+7. There are even further configuration options described in `docs/configuration.md`.
+   Happy ricing!
+
+**Tips**
+
+> Start with the `hyprland.conf`. Make sure the monitors are correctly configured, your
+> monitor setup and resolution may differ from mine. If you mouse is slow, increase the
+> `sensitivity` value under the `input` block.
+>
+> See Hyprland binds in `~/.config/hypr/hyprland.conf` for how I control my Window
+> manager.
+
+**Caveats**
+
+> There is one CSS import where I use a hardcoded absolute path with my username, see
+> `wofi/.config/wofi/style.css`. Adapt this to make it work for you.
+>
+> Several program configs are dependent on the pywal generated cache files. Make sure to
+> stow pywal and run it. `wal -i /path/to/wallpaper -nt` or use my wallpaper script
+> `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the
+> configs.
 
 ## Base System Software
 
@@ -201,8 +214,7 @@ These scripts are available.
 
 ```bash
 - backup-local-dotfiles.sh  # Save existing dotfiles to folder.
-- stow-all.sh  # Stow "all" dotfiles.
-- unstow-all.sh  # Remove stowed dotfiles.
+- stow-all.sh  # Stow "all" dotfiles. Use "--unstow" flag to revert.
 ```
 
 The local bashrc versions, `penguin` and `rpi4`, are not included in `stow-all.sh`.

@@ -1,6 +1,6 @@
 # General Customization Guides
 
-## Icons
+## Icon Themes
 
 Install icon theme packages.
 
