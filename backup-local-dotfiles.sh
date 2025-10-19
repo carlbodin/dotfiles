@@ -81,7 +81,7 @@ if [[ "$MODE" == "backup" ]]; then
     fi
 
     if [[ $counter -eq 1 ]]; then
-        echo "No files to backup. They are all probably symlinks already."
+        echo "No files to backup. They are probably symlinked already."
     fi
 
 
@@ -101,6 +101,7 @@ elif [[ "$MODE" == "restore" ]]; then
         if [[ "$DRY_RUN" -eq 1 ]]; then
             echo "Would restore: $backup_file → $restore_path"
         else
+            stow -D $foldername
             mkdir -p "$(dirname "$restore_path")"
             cp "$backup_file" "$restore_path"
             echo "✅ Restored: $backup_file → $restore_path"

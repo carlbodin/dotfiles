@@ -1,16 +1,11 @@
-# Dotfiles
-
-This repo contains stowable dotfiles, templates, and installation guides to share
-between devices.
-
-## Stow
+# Stow
 
 The following configs are stowable with GNU `stow`.
 
 ```bash
 - bash
-- bash_desktop  # local desktop
-- bash_rpi4  # local rpi4
+- bash-desktop  # local desktop
+- bash-rpi4  # local rpi4
 - hypridle
 - hyprland
 - hyprlock
@@ -28,7 +23,35 @@ The following configs are stowable with GNU `stow`.
 - wofi
 ```
 
-### Installation
+## Scripts
+
+I have two utility scripts for stowing, `backup-local-dotfiles.sh` and `stow-all.sh`.
+
+#### Backup Local Dotfiles
+
+The backup process is moving, not copying, the relevant files to
+`~/dotfiles/local-dotfiles-backup/`. This enables you to run the script `stow-all.sh`
+directly after.
+
+```bash
+./backup-local-dotfiles.sh [--dry-run] [--restore]
+```
+
+Run with the `--restore` flag to copy the backed-up files back to their original path.
+This mode also unstows the relevant dotfile before copying the original back to its
+path.
+
+#### Stow All
+
+Iterates over all repository folders, unless mentioned in `.stow-global-ignore`, and
+runs `stow` on them. The result is reported in the terminal. Use the `--unstow` flag to
+reverse the process and remove all symlinks.
+
+```bash
+./stow-all.sh [--unstow]
+```
+
+## Installation
 
 Install with pacman.
 
@@ -43,7 +66,7 @@ want to use custom paths for source and target directories.
 cd && git clone git@github.com:carlbodin/dotfiles.git
 ```
 
-### Usage
+## Usage
 
 `cd` into the repo and then `stow` + `name of the config`. The `name of the config` must
 be the name of a folder on the path, unless other is explicitly stated. E.g. `bash` in
@@ -74,7 +97,7 @@ system, use source and target directories when running `stow`.
 stow -S -d /path/to/repo/dotfiles -t /path/where/to/place/symlink bash
 ```
 
-### More behaviors
+## More behaviors
 
 If the dotfile is already stowed, `stow` will do nothing.
 
