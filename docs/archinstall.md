@@ -221,6 +221,9 @@ I do not add any other repositories. You can add the `multilib` repository here 
 you know you will run Steam `proton`, or other `Wine`-based translation layers for
 graphic APIs.
 
+To enable this later in the actual OS, edit the `/etc/pacman.conf` by uncommenting the
+`[multilib]` section, and then run `pacman -Sy` to sync your new repositories.
+
 ##### 2.3.18 Timezone
 
 Set your timezone.

@@ -23,9 +23,6 @@
 
 **Caveats**
 
-> There is one CSS import where I use a hardcoded absolute path with my username, see
-> `wofi/.config/wofi/style.css`. Adapt this to make it work for you.
->
 > Several program configs are dependent on the pywal generated cache files. Make sure to
 > stow pywal and run it. `wal -i /path/to/wallpaper -nt` or use my wallpaper script
 > `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the

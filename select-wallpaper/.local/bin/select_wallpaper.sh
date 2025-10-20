@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Check if wofi is running.
+if pgrep -x "wofi" > /dev/null; then
+    # Kill wofi if it's running.
+    pkill -x wofi
+    exit 0
+fi
+
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 SDDM_WALLPAPER="/usr/share/sddm/themes/$(grep '^Current=' /etc/sddm.conf | cut -d'=' -f2)/select_wallpaper.jpg"
 
