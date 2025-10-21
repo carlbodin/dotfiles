@@ -12,18 +12,9 @@
   shortcuts.
 - Templates for software configurations.
 
-**Tips**
+### Tips
 
-> Start with the `hyprland.conf`. Make sure the monitors are correctly configured, your
-> monitor setup and resolution may differ from mine. If you mouse is slow, increase the
-> `sensitivity` value under the `input` block.
->
-> See Hyprland binds in `~/.config/hypr/hyprland.conf` for how I control my Window
-> manager.
-
-**Caveats**
-
-> Several program configs are dependent on the pywal generated cache files. Make sure to
-> stow pywal and run it. `wal -i /path/to/wallpaper -nt` or use my wallpaper script
-> `select_wallpaper.sh`. Alternatively, remove the sourcing of pywal themes from the
-> configs.
+Start with the `hyprland.conf`.
+1. Make sure your monitors' resolution, position, and mode.
+2. If needed, edit the mouse `sensitivity` value under the `input` block.
+3. See binds under the `KEYBINDINGS` section for Window Manager control.
