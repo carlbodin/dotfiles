@@ -10,7 +10,7 @@
 - Hyprland installation guide, see `docs/hyprinstall.md`.
 - Configuration guide, see `docs/configuration.md`. E.g., theming, default apps, and
   shortcuts.
-- Templates for software configurations.
+- Templates for software configurations. E.g., `.gitconfig`, `fstab`, and `sddm`.
 
 ### Tips
 
