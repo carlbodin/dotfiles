@@ -51,6 +51,17 @@ reload_services() {
     fi
 }
 
+update_colorpicker() {
+    wal_colors="$HOME/.cache/wal/colors"
+    output_file="$HOME/.cache/colorpicker/colors"
+
+    # Check if wal_colors file exists
+    if [[ -f "$wal_colors" ]]; then
+        # Read line 7 (text) and write it to the output file
+        sed -n '8p' "$wal_colors" > "$output_file"
+    fi
+}
+
 main() {
     # Show menu and get selection, if there are images
     if [[ -d "$WALLPAPER_DIR" ]] && find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | grep -q .; then
@@ -92,8 +103,9 @@ main() {
     
     # Run pywal
     if command -v wal > /dev/null; then
-        wal -i "$selected_wallpaper" -nt
+        wal -i "$selected_wallpaper" -nts
         echo "Pywal applied"
+        update_colorpicker
     else
         echo "Warning: pywal not found, skipping color scheme generation"
     fi
