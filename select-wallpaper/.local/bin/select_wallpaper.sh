@@ -10,14 +10,12 @@ fi
 WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 SDDM_WALLPAPER="/usr/share/sddm/themes/$(grep '^Current=' /etc/sddm.conf | cut -d'=' -f2)/select_wallpaper.jpg"
 
-# Check if wallpaper directory exists
-if [ ! -d "$WALLPAPER_DIR" ]; then
-    echo "Error: Wallpaper directory $WALLPAPER_DIR does not exist!"
-    exit 1
-fi
-
 menu() {
     find "${WALLPAPER_DIR}" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | awk '{print "img:"$0}'
+}
+
+menu_default() {
+    find /home/carl/.config/hypr -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | awk '{print "img:"$0}'
 }
 
 reload_services() {
@@ -51,13 +49,15 @@ reload_services() {
         waybar &
         echo "Waybar reloaded"
     fi
-
-
 }
 
 main() {
-    # Show menu and get selection
-    choice=$(menu | wofi --conf ~/.config/wofi/config_select_wallpaper --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
+    # Show menu and get selection, if there are images
+    if [[ -d "$WALLPAPER_DIR" ]] && find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.webp" \) | grep -q .; then
+        choice=$(menu | wofi --conf ~/.config/wofi/config_select_wallpaper --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
+    else
+        choice=$(menu_default | wofi --conf ~/.config/wofi/config_select_wallpaper --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
+    fi
     
     if [ -z "$choice" ]; then
         echo "No wallpaper selected. Exiting."

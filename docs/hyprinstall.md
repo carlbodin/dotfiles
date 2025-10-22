@@ -11,21 +11,25 @@ relevant files to `~/dotfiles/local-dotfiles-backup/`.
 
 1. Use pacman to install "System base" and "Window manager" packages listed below.
 2. Install `yay`, or your helper of choice, to allow AUR downloads.
-3. Use `yay` to install `wlogout` and `pywal`.
+3. Use `yay` to install `wlogout` and `pywal`. Then run
+   `wal -st -i ~/.config/hypr/select_wallpaper.jpg`. Do this on your own wallpaper in
+   bullet (6) below.
 4. Clone this repo to your home folder,
    `git clone --depth 1 https://github.com/carlbodin/dotfiles`.
 5. Use `stow` to setup configurations for all apps, see guide in `docs/stow.md`. You can
    use my `backup-local-dotfiles.sh` script to backup eventual local copies of the
    relevant dotfiles. Hyprland's config `~/.config/hypr/hyprland.conf` already exists,
    so that needs to be removed prior to stowing. You can always find their default
-   config [here](https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf). It
-   is a bit tricky to work with `~/.config/hypr/hyprland.conf`, since it reloads on
-   save. If you run into problems where it seems to not reload properly, run
-   `hyprctl reload`.
-6. Install the rest of the packages in which ever order you like. I recommend this order
+   config [here](https://github.com/hyprwm/Hyprland/blob/main/example/hyprland.conf).
+   This config reloads on save. If you run into problems where it seems to not reload
+   properly, run `hyprctl reload`.
+6. With `pywal` and `select-wallpaper` stowed, run the `select_wallpaper.sh` script to
+   generate pywal. This is bound to the key combination `shift` + `mainMod` + `W`. This
+   assumes you have images in `~/Pictures/wallpapers`.
+7. Install the rest of the packages in which ever order you like. I recommend this order
    because of some nested dependencies I have with background images and pywal color
    palettes for multiple programs.
-7. There are even further configuration options described in `docs/configuration.md`.
+8. There are even further configuration options described in `docs/configuration.md`.
    Happy ricing!
 
 ## Packages
