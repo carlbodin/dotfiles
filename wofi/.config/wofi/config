@@ -3,8 +3,8 @@
 
 [config]
 # Appearance
-width=1110px
-height=500px
+width=1000px
+height=520px
 location=center
 orientation=vertical
 allow_images=true
