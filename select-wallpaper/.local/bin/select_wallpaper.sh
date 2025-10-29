@@ -105,7 +105,6 @@ main() {
     if command -v wal > /dev/null; then
         wal -i "$selected_wallpaper" -nts
         echo "Pywal applied"
-        update_colorpicker
     else
         echo "Warning: pywal not found, skipping color scheme generation"
     fi
