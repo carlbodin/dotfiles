@@ -75,6 +75,7 @@ tooltip {
 #bluetooth,
 #network,
 #battery {
+  margin: 1px;
   padding: 0px 15px 0 15px;
   color: rgba(200, 200, 200, 0.95);
 }
@@ -104,9 +105,11 @@ tooltip {
 }
 
 #tray {
+  margin: 1px;
   padding: 0px 15px 0px 15px;
   transition: all 0.2s ease;
   color: rgba(200, 200, 200, 0.95);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   background: alpha(@background, 0.7);
 }
@@ -136,18 +139,20 @@ tooltip {
 }
 
 #1 {
+  margin: 1px;
   border-radius: 16px;
   background: alpha(@background, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
 #idle_inhibitor {
-  padding: 0px 15px 0px 10px;
+  padding: 0px 10px 0px 15px;
 }
 #custom-colorpicker {
-  padding: 0px 10px 0px 15px;
+  padding: 0px 18px 0px 5px;
 }
 
 #connections {
+  margin: 1px;
   border-radius: 16px;
   background: alpha(@background, 0.6);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
