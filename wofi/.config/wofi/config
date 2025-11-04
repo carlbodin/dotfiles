@@ -3,7 +3,7 @@
 
 [config]
 # Appearance
-width=1000px
+width=1100px
 height=520px
 location=center
 orientation=vertical
