@@ -39,13 +39,34 @@ these are aweful.
 
 ## Nautilus Theme
 
-Nautilus has changed default from the customizable `gtk-X.0` into `libadwaita`, which
+`Nautilus` has changed default from the customizable `gtk-X.0` into `libadwaita`, which
 can only be light or dark. Use another file manager like `Thunar` or `Dolphin` for more
-customiability.
+customiability. `Nautilus` and `Baobab` (Disk Usage Analyzer) honor the
+`gsettings/xdg-desktop-portal` GTK theme setting.
 
 ```bash
 sudo pacman -S dconf
 dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+```
+
+## GTK3.0 App Theming
+
+Apps like `nm-connection-editor` and `blueman-manager` are GTK apps not tightly
+integrated with GNOME Shell, so they might ignore the dark preference if the theme isn’t
+explicitly set in a GTK config.
+
+Add content to this file: `nano ~/.config/gtk-3.0/settings.ini`.
+
+```bash
+[Settings]
+gtk-application-prefer-dark-theme=1
+```
+
+Here you could also specify GTK3.0 themes.
+
+```bash
+[Settings]
+gtk-theme-name=Adwaita-dark
 ```
 
 ## Make Specific Window Semi-Transparent and Blurred
