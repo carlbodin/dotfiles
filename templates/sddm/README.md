@@ -59,16 +59,3 @@ GitHub, e.g., Keyitdev's
 3. Move the folder to the `SDDM` library:
    `sudo mv ~/Downloads/<theme-name> /usr/share/sddm/themes/`.
 4. Enable the theme using `/etc/sddm.conf` like described in the section above.
-
-## Wayland Tips
-
-Create the file `/etc/sddm.conf.d/wayland.conf` with the content:
-
-```plaintext
-[General]
-DisplayServer=wayland
-```
-
-This changes the display server from the default `Xorg` to `Wayland`, if possible. Note
-that this is not supported for all themes, but for those that do support it you save RAM
-usage on not running multiple display servers on different `tty` in parallel.
