@@ -5,6 +5,7 @@ Host config_name (usually the same as HostName)
   HostName hostname/ip
   User username
   IdentityFile ~/.ssh/path/to/private_key
+  SetEnv TERM=xterm-256color  # To support the terminal in ssh protocol.
 
 # Git template, add public to "SSH and GPG keys" on github.
 Host github.com
