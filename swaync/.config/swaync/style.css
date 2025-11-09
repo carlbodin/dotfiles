@@ -9,7 +9,7 @@
   --complementary-color: @color11;
   --padding: calc(var(--border-radius) / 2);
   --margin: var(--border-radius);
-  --my-font: "JetBrainsMono Nerd Font";
+  --my-font: "Noto Sans";
 }
 
 .control-center {
