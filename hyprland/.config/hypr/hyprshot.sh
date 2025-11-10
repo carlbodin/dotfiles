@@ -7,4 +7,4 @@ if pgrep -x "hyprshot" > /dev/null; then
 fi
 
 # Pass all arguments to hyprshot.
-hyprshot "$@"
+hyprshot "$@" --output-folder "$HOME/Pictures/screenshots"
