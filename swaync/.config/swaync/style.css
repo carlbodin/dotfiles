@@ -9,7 +9,8 @@
   --complementary-color: @color11;
   --padding: calc(var(--border-radius) / 2);
   --margin: var(--border-radius);
-  --my-font: "Noto Sans";
+  --main-font: "Noto Sans";
+  --icon-font: "JetBrainsMono Nerd Font";
 }
 
 .control-center {
@@ -18,12 +19,13 @@
   color: var(--text-color);
   border: none;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  font-family: var(--my-font);
+  font-family: var(--main-font);
 }
 
 /* Widget styling */
 .widgets > .widget,
 .widget-mpris > box > button {
+  font-family: var(--main-font);
   background: var(--widget-background);
   border-radius: var(--border-radius);
   padding: calc(var(--border-radius) / 2);
@@ -40,10 +42,18 @@
 
 /* MPRIS widget */
 .widget.widget-mpris {
+  font-family: var(--main-font);
   background: transparent;
   border-radius: 0;
   padding: 0;
   border: none;
+}
+
+.widget-volume label,
+.widget-volume .icon,
+.widget-volume > box > button label {
+  font-family: var(--icon-font);
+  font-size: large;
 }
 
 .widget.widget-mpris > carouselindicatordots {
@@ -82,20 +92,20 @@
 }
 
 .notification .summary {
-  font-family: var(--my-font);
-  font-size: 0.9909rem;
+  font-family: var(--main-font);
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .notification .body {
-  font-family: var(--my-font);
-  font-size: 0.8891rem;
+  font-family: var(--main-font);
+  font-size: 0.9rem;
   font-weight: 400;
-  margin-top: 0.31rem;
+  margin-top: 0.3rem;
 }
 
 .notification .time {
-  font-size: 0.8291rem;
+  font-size: 0.83rem;
   font-weight: 500;
 }
 
@@ -131,17 +141,25 @@
   padding: 0px 10px;
   margin-right: 0px;
   margin-top: 3px;
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
 }
 
 .widget-title > button:hover {
   background: var(--accent-color);
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
 }
 
 /* Buttons grid */
+/* This first block resets any inherited transition on hover. */
+.widget-buttons-grid,
+.widget-buttons-grid > flowbox,
+.widget-buttons-grid > flowbox > flowboxchild {
+  background: transparent;
+  transition: none;
+  padding: 0;
+}
+
 .widget-buttons-grid {
-  font-family: var(--my-font);
   background: transparent;
   padding: 8px;
   margin: 0px 10px 10px 10px;
@@ -149,17 +167,18 @@
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
+  font-family: var(--icon-font);
   background: transparent;
   border-radius: var(--border-radius);
   border: none;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
   /* min-width: 62px; 3 buttons */
   min-width: 115px; /*2 buttons */
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @color4;
-  transition: all 0.5s ease;
+  background: var(--accent-color);
+  transition: all 0.2s ease;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
@@ -169,13 +188,13 @@
 .widget-buttons-grid > flowbox > flowboxchild > button label {
   font-size: 20px;
   color: @color7;
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover label,
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
   color: var(--text-color);
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
 }
 
 /* Volume and backlight sliders */
@@ -197,11 +216,17 @@ trough {
 trough highlight {
   background: var(--accent-color);
   border-radius: 20px;
-  transition: all 0.7s ease;
+  transition: all 0.2s ease;
 }
 
 trough slider {
   background: transparent;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+trough slider:hover {
+  background: var(--accent-color);
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
 
 /* Animation */
