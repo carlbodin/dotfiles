@@ -5,19 +5,17 @@
 # Default PS1.
 #PS1='[\u@\h \W]\$ '
 
-# Git autocompletion.
-if [ -f /usr/share/git/completion/git-completion.bash ]; then
-  . /usr/share/git/completion/git-completion.bash
-fi
-
 # Init starship, unless vscode.
 if [ "$TERM_PROGRAM" != "vscode" ]; then
   eval "$(starship init bash)"
 fi
 
+# Set up zoxide (smart cd).
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init bash)"
+fi
+
 # Aliases.
-alias cod='code --enable-features=UseOzonePlatform --ozone-platform-hint=wayland'  # Run code with functioning mouse wheel paste highlighted text between windows.
-alias disc='discord --no-sandbox'  # Does NOT seem to work. "To avoid app freezing. Flag to not run discord isolated.
 alias si='swayimg'  # Sway wayland image viewer.
 alias pacprune='sudo pacman -Rns $(pacman -Qdtq)'  # Remove all orphaned packages, along with their subdependencies and configs.
 
