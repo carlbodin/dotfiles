@@ -98,7 +98,7 @@
     ]
   },
   "custom/colorpicker": {
-    "format": "<span size='small'><span font_family='Noto Sans'>{}</span></span>",
+    "format": "<span size='small'>{}</span>",
     "return-type": "json",
     "interval": "once",
     "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
@@ -171,11 +171,11 @@
       "warning": 30,
       "critical": 20
     },
-  "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
-  "format": "{icon} <span font_family='Noto Sans'>{capacity}%</span>",
-  "format-charging": "󰂄 <span font_family='Noto Sans'>{capacity}%</span>",
-  "format-plugged": "󰂄  <span font_family='Noto Sans'>{capacity}%</span>",
-  "format-alt": "{icon} <span font_family='Noto Sans'>{time}</span>",
+    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
+    "format": "{icon} <span font_family='Noto Sans'>{capacity}%</span>",
+    "format-charging": "󰂄 <span font_family='Noto Sans'>{capacity}%</span>",
+    "format-plugged": "󰂄  <span font_family='Noto Sans'>{capacity}%</span>",
+    "format-alt": "{icon} <span font_family='Noto Sans'>{time}</span>",
     "format-icons": [
       "󰁻",
       "󰁼",
