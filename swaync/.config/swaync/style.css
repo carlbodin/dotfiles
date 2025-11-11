@@ -14,7 +14,7 @@
 }
 
 .control-center {
-  background: alpha(@background, 0.4);
+  background: alpha(@background, 0.7);
   border-radius: var(--border-radius);
   color: var(--text-color);
   border: none;
