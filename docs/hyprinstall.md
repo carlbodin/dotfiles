@@ -40,15 +40,13 @@ Core system packages with complete `pacman` install commands.
 
 ```bash
 # System base
-sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire
-# Window manager
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty nautilus wofi waybar swaync wl-clipboard brightnessctl pavucontrol nm-connection-editor blueman
-# I always install
-sudo pacman -S fzf htop git less openssh stow firefox swayimg baobab fastfetch ffmpeg ufw man-db
+sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland nano iwd networkmanager wget pipewire openssh git less ufw
+# Window manager environment
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab man-db htop firefox fzf swayimg python-pywal
 # Utility
-sudo pacman -S docker tmux btop starship fd ripgrep zoxide ntfs-3g tree wf-recorder git-lfs
+sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs
 # Apps
-sudo pacman -S vlc gimp spotify steam  # Steam: Remember to enable pacman multilib.
+sudo pacman -S vlc gimp spotify libreoffice-fresh steam  # Steam: Remember to enable pacman multilib.
 # Fonts
 sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
 ```
@@ -56,10 +54,10 @@ sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
 #### AUR Packages
 
 ```bash
-# YAY and AUR
+# Install yay for AUR access
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -r yay
 # System
-yay -S wlogout
+yay -S wlogout python-pywalfox
 # Apps
 yay -S visual-studio-code-bin discord localsend heroic-games-launcher-bin
 ```
@@ -71,22 +69,23 @@ Alternative view of the system in text blocks with descriptions.
 #### Window Manager
 
 ```
-hyprland
-hyprpaper
-hyprlock
 hypridle
-hyprshot
+hyprland
+hyprlock
+hyprpaper
 hyprpicker
+hyprshot
 ```
 
 ```
-sddm
-wofi (or rofi-wayland)
-waybar
-wlogout (Power menu, `yay -S wlogout`.)
-swaync
-wl-clipboard
 brightnessctl
+sddm
+swaync
+ufw (load iptables kernel modules, set rules and enable ufw)
+waybar
+wl-clipboard
+wlogout
+wofi
 ```
 
 #### Bluetooth stack
@@ -112,59 +111,60 @@ pipewire: low level control, modern, low-latency, and secure
 pavucontrol: gui (orig pulseaudio but pipewire has compatibility layer)
 ```
 
-#### Other System Tools
-
-```
-polkit (Authentication software, used in my select_wallpaper.sh script.)
-firewall: ufw (load iptables kernel modules, set rules and enable ufw)
-fstrim: trim ssd (`sudo systemctl enable fstrim.timer`, `sudo systemctl start fstrim.timer`)
-```
-
 ### Utility Apps
 
 Generally useful GUI tools.
 
 ```
-file manager: nautilus
-web browser: firefox
-image viewer: swayimg / feh
 disk usage analyzer: baobab
+file manager: nautilus
+image viewer: swayimg / feh
+web browser: firefox
 ```
 
 Generally useful terminal tools.
 
 ```
-fzf
-htop
 btop
-tmux
+fastfetch (System info)
+fd (Search file and folder names fast)
+fzf (Search in shell history)
 git-lfs
-fastfetch
-fd (file and folder search)
-ripgrep (file content search)
-zoxide (smart cd)
-man (pacman man-db)
+htop
+man
+ripgrep (Search file content fast)
+tmux
+pastel (Color palette generator)
 wf-recorder (Wayland screenrecorder: `wf-recorder -f output.mp4`)
-pastel (Color palette generation software run in terminal.)
+zoxide (Smart cd)
 ```
 
 Generally un-useful tools.
 
 ```
-cowsay
+cava (Frequency bar visualizer. Install from pacman.)
+cowsay (Funny quote generator)
 fortune (pacman fortune-mod)
+pipes.sh (Pipe visualization script of terminal colors, install from yay)
 ```
 
 ### Apps
 
 ```
-vscode official (`yay -S visual-studio-code-bin`)
-gimp
-vlc
-libreoffice / openoffice
+localsend (Make port in firewall: `sudo ufw allow 53317`)
+gimp (Photo editing)
 spotify
-caprine, see AUR
-localsend (`yay -S localsend`, `sudo ufw allow 53317`)
+vlc (Media player)
+vscode official
+```
+
+LibreOffice suite, an open-source variant of the MicrosoftOffice suite.
+
+```bash
+sudo pacman -S libreoffice-fresh           # All programs
+sudo pacman -S libreoffice-still-writer    # Only word processor
+sudo pacman -S libreoffice-still-calc      # Only spreadsheet
+sudo pacman -S libreoffice-still-impress   # Only presentations
 ```
 
 ### Ricing Software
@@ -173,11 +173,9 @@ JetBrainsMono Font: `sudo pacman -S ttf-jetbrains-mono-nerd && fc-cache -fv`.
 
 ```
 stow
-pywal (Color themes from the wallpaper, install with `sudo pacman -S python-pywal`, themes are in `~/.cache/wal/`.)
-pywalfox (Both on system from yay `yay -S python-pywalfox` and as extension in Firefox. After installation, enter extension and press "Fetch theme".)
-starship, also install and use the "font_family CaskadyaCove Nerd Font Mono"
-cava (Frequency bar visualizer. Install from pacman.)
-pipes.sh (Pipe terminal colors visualization script. Install from yay.)
+pywal (Color themes from the wallpaper, themes are in `~/.cache/wal/` and templates in `~/.config/wal/`)
+pywalfox (Also install as extension in Firefox)
+starship (Requires CaskadyaCove Nerd Font Mono)
 ```
 
 ### Games
@@ -185,6 +183,6 @@ pipes.sh (Pipe terminal colors visualization script. Install from yay.)
 Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
 file.
 
-Heroic Games Launcher: `yay heroic-games-launcher-bin`.
+Heroic Games Launcher (Can connect to EpicGames)
 
-Discord, see AUR.
+Discord
