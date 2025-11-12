@@ -4,7 +4,7 @@
   --border-radius: 16px;
   --widget-background: transparent;
   --notification-bg: alpha(@color9, 1);
-  --text-color: @color15;
+  --text-color: white;
   --accent-color: @color9;
   --complementary-color: @color11;
   --padding: calc(var(--border-radius) / 2);
@@ -187,7 +187,7 @@
 
 .widget-buttons-grid > flowbox > flowboxchild > button label {
   font-size: 20px;
-  color: @color7;
+  color: var(--text-color);
   transition: all 0.2s ease;
 }
 
@@ -220,6 +220,7 @@ trough highlight {
 }
 
 trough slider {
+  outline: none;
   background: transparent;
   box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
