@@ -165,6 +165,12 @@ Say you want to add `swayimg` as default for the JPEG file type.
 xdg-mime default swayimg.desktop image/jpg
 ```
 
+Or add Snap's `Firefox` as default for the PDF file type.
+
+```bash
+xdg-mime default firefox_firefox.desktop application/pdf
+```
+
 What happens is that an entry is added to the `~/.config/mimeapps.list`.
 
 ```bash
