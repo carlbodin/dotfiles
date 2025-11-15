@@ -104,7 +104,7 @@ Find possible culprit and disable their autostart, or uninstall them.
 sudo systemctl disable wpa_supplicant  # Given you are using iwd instead.
 ```
 
-## Add Custom Binaries to App Launchers
+## Add Custom Shortcuts to App Launchers
 
 Add a symlink in `~/.local/bin` to your binary.
 
@@ -181,3 +181,63 @@ image/png=swayimg.desktop
 image/gif=swayimg.desktop
 ...
 ```
+
+## Hibernation
+
+Hibernation has some prerequisites. During `archinstall`, if you setup a separate swap
+partition and run the `systemd bootloader`, hibernation will work out of the box. But if
+you did not, this guide shows you how to setup a swapfile for hibernation after the
+`archinstall` process.
+
+- Note that you cannot hibernate on ZRAM swap.
+- The swap needs to possibly fit your full RAM.
+
+Check your RAM size.
+
+```bash
+free -h
+```
+
+Create a swapfile in your filesystem's root.
+
+```bash
+sudo dd if=/dev/zero of=/swapfile bs=1M count=16384 status=progress  # 16GB, adjust as needed
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+```
+
+Add to `/etc/fstab`:
+
+```plaintext
+/swapfile none swap defaults 0 0
+```
+
+Find your root partition UUID and swap file offset.
+
+```bash
+findmnt -no UUID -T /swapfile
+sudo filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}'
+```
+
+Edit `/etc/default/grub` and change this line:
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet resume=UUID=<YOUR-ROOT-UUID> resume_offset=<YOUR-OFFSET>"
+```
+
+Edit `/etc/mkinitcpio.conf` and add `resume` hook AFTER `udev`:
+
+```bash
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems resume fsck)
+```
+
+Regenerate GRUB config:
+
+```bash
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+Reboot before trying it out. Then test with systemctl hibernate. The key is getting that
+`GRUB` `resume=` parameter pointing to your actual disk swap.
