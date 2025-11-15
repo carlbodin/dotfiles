@@ -2,14 +2,14 @@
     "label": "suspend",
     "text" : "󰤄",
     "action": "systemctl suspend",
-    "keybind": "h"
+    "keybind": "u"
 }
 
 {
-    "label": "logout",
-    "text" : "󰍃",
-    "action" : "hyprctl dispatch exit",
-    "keybind": "l"
+    "label": "hibernate",
+    "text" : "󰏤",
+    "action" : "systemctl hibernate",
+    "keybind": "h"
 }
 
 {
