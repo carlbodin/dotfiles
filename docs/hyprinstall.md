@@ -42,7 +42,7 @@ Core system packages with complete `pacman` install commands.
 # System base
 sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland nano iwd networkmanager wget pipewire openssh git less ufw
 # Window manager environment
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab man-db htop firefox fzf swayimg python-pywal
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab man-db htop firefox fzf swayimg python-pywal
 # Utility
 sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr
 # Apps
@@ -79,6 +79,7 @@ hyprshot
 
 ```
 brightnessctl
+cliphist
 sddm
 swaync
 ufw (load iptables kernel modules, set rules and enable ufw)

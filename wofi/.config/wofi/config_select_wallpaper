@@ -4,19 +4,18 @@
 [config]
 # Appearance
 width=1050px
-height=625px
 location=center
 orientation=vertical
 allow_images=true
 image_size=300
 content_halign=center
 columns=3
+lines=3
 hide_scroll=true
 
 # Search
 show=drun
-prompt=Search
-# matching=fuzzy
+prompt=Select wallpaper
 insensitive=true
 allow_markup=false
 sort_order=default

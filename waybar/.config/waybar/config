@@ -94,8 +94,17 @@
     "orientation": "horizontal",
     "modules": [
       "idle_inhibitor",
-      "custom/colorpicker"
+      "custom/colorpicker",
+      "custom/clipboard"
     ]
+  },
+  "idle_inhibitor": {
+    "format": "<span size='small'>{icon}</span>",
+    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
   },
   "custom/colorpicker": {
     "format": "<span size='small'>{}</span>",
@@ -105,13 +114,12 @@
     "on-click": "~/.config/waybar/scripts/colorpicker.sh",
     "signal": 1
   },
-  "idle_inhibitor": {
-    "format": "<span size='small'>{icon}</span>",
-    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
-    "format-icons": {
-      "activated": "",
-      "deactivated": ""
-    }
+  "custom/clipboard": {
+    "format": "󰨸",
+    "on-click": "~/.config/waybar/scripts/cliphist_menu.sh",
+    "on-click-right": "~/.config/waybar/scripts/cliphist_menu.sh --delete",
+    "on-click-middle": "~/.config/waybar/scripts/cliphist_menu.sh --wipe",
+    "tooltip": false
   },
   "group/connections": {
     "orientation": "horizontal",
