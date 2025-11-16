@@ -11,17 +11,10 @@ case "$1" in
         exit 0
         ;;
     --delete)
-        selected=$(cliphist list | awk -F'\t' '{$1=""; print substr($0,2)}' | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Delete entry")
-        if [ -n "$selected" ]; then
-            cliphist list | grep -F "$selected" | head -n1 | cliphist delete
-        fi
-        # cliphist list | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Delete entry" | cliphist delete
+        cliphist list | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Delete entry" | cliphist delete
         exit 0
         ;;
 esac
 
 # Normal clipboard selection.
-selected=$(cliphist list | awk -F'\t' '{$1=""; print substr($0,2)}' | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Select item to copy")
-if [ -n "$selected" ]; then
-    cliphist list | grep -F "$selected" | head -n1 | cliphist decode | wl-copy
-fi
+cliphist list | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Select item to copy" | cliphist decode | wl-copy
