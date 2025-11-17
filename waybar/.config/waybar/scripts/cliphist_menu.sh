@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WOFI_ARGS="--dmenu --columns 1 --lines 8 --width 600 --allow-images --insensitive"
+
 # Parse flags.
 case "$1" in
     --wipe)
@@ -11,10 +13,10 @@ case "$1" in
         exit 0
         ;;
     --delete)
-        cliphist list | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Delete entry" | cliphist delete
+        cliphist list | wofi $WOFI_ARGS --prompt "Delete entry" | cliphist delete
         exit 0
         ;;
 esac
 
 # Normal clipboard selection.
-cliphist list | wofi --dmenu --columns 1 --lines 8 --width 600 --allow-images -i --prompt "Select item to copy" | cliphist decode | wl-copy
+cliphist list | wofi $WOFI_ARGS --prompt "Select item to copy" | cliphist decode | wl-copy
