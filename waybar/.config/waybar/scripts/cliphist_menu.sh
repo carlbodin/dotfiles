@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WOFI_ARGS="--dmenu --columns 1 --lines 8 --width 600 --allow-images --insensitive"
+WOFI_ARGS="--dmenu --width 770 --allow-images --insensitive"
 
 # Parse flags.
 case "$1" in

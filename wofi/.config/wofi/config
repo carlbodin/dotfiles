@@ -3,13 +3,13 @@
 
 [config]
 # Appearance
-width=1100px
-height=520px
+width=500px
+height=490px
 location=center
 orientation=vertical
 allow_images=true
-image_size=64
-columns=3
+image_size=38
+columns=1
 hide_scroll=true
 
 # Search
