@@ -119,7 +119,8 @@
     "on-click": "~/.config/waybar/scripts/cliphist_menu.sh",
     "on-click-right": "~/.config/waybar/scripts/cliphist_menu.sh --delete",
     "on-click-middle": "~/.config/waybar/scripts/cliphist_menu.sh --wipe",
-    "tooltip": false
+    "tooltip": true,
+    "tooltip-format": "<span font_family='Noto Sans'>Left-click: Select item\n\nRight-click: Delete item\n\nMiddle-click: Wipe history</span>"
   },
   "group/connections": {
     "orientation": "horizontal",
