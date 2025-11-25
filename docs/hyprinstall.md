@@ -44,7 +44,7 @@ sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-uti
 # Window manager environment
 sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab man-db htop firefox fzf swayimg python-pywal
 # Utility
-sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr
+sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope
 # Apps
 sudo pacman -S vlc gimp spotify libreoffice-fresh steam  # Steam: Remember to enable pacman multilib.
 # Fonts
@@ -186,5 +186,9 @@ Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in 
 file.
 
 Heroic Games Launcher (Can connect to EpicGames)
+
+gamescope (Microcompositor, specific isolated graphical environment for compatibility)
+
+mangohud (Game performance overlay)
 
 Discord

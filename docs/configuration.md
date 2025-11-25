@@ -241,3 +241,66 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 Reboot before trying it out. Then test with systemctl hibernate. The key is getting that
 `GRUB` `resume=` parameter pointing to your actual disk swap.
+
+## Gamescope Microcompositor
+
+Not all desktop environments or window managers are optimized for gaming. Gamescope is a
+microcompositor to solve this problem. It creates an isolated graphical environment that
+has its own rendering pipeline, regardless of any other compositors in an OS. Gamescope
+bring compatibility, ease of configuration, and sometimes added graphical functionality.
+
+```bash
+sudo pacman -S gamescope
+```
+
+Common flags.
+
+```bash
+-h 1080                 # Rendered height.
+-w 1920                 # Rendered width.
+-H 1440                 # Output height. Use for scaling.
+-W 2560                 # Output width.
+
+-S, --scaler            # Upscaler type (auto, integer, fit, fill, stretch)
+-F, --filter            # Upscaler filter (linear, nearest, fsr, nis, pixel)
+                        #   fsr => AMD FidelityFX™ Super Resolution 1.0
+                        #   nis => NVIDIA Image Scaling v1.0.3
+--sharpness, --fsr-sharpness   # Upscaler sharpness from 0 (max) to 20 (min).
+
+-s, --mouse-sensitivity # Multiply mouse movement by given decimal number.
+--framerate-limit 60    # Set a simple framerate limit.
+--mangoapp              # Launch with the mangoapp.
+--adaptive-sync         # Enable adaptive sync if available (VRR).
+
+-f                      # Make the window fullscreen.
+-b, --borderless        # Make the window borderless.
+
+-g, --grab              # Grab keyboard.
+--force-grab-cursor     # Grab mouse cursor.
+-O, --prefer-output     # List monitor prio: DP-1, HDMI-A-1
+```
+
+### Use in Heroic Games Launcher
+
+Example usage in Heroic with dummy arguments.
+
+```bash
+# NAME     |  # ARGS
+gamescope  |  -w 3440 -h 1440 --force-grab-cursor -f --
+```
+
+### Use in Steam
+
+Example usage in Steam with dummy arguments.
+
+```bash
+gamescope -w 1920 -h 1080 -W 2560 -H 1440 -F nis -O DP-1 -f -- %command%
+```
+
+## Use in terminal
+
+Example usage in terminal with dummy arguments.
+
+```bash
+gamescope -w 1920 -h 1080 -b --mangoapp --adaptive-sync -- </path/to/game/binary>
+```
