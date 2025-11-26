@@ -242,7 +242,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 Reboot before trying it out. Then test with systemctl hibernate. The key is getting that
 `GRUB` `resume=` parameter pointing to your actual disk swap.
 
-## Gamescope Microcompositor
+## Gamescope
 
 Not all desktop environments or window managers are optimized for gaming. Gamescope is a
 microcompositor to solve this problem. It creates an isolated graphical environment that
@@ -253,7 +253,7 @@ bring compatibility, ease of configuration, and sometimes added graphical functi
 sudo pacman -S gamescope
 ```
 
-Common flags.
+Common flags. See `gamescope --help` for more.
 
 ```bash
 -h 1080                 # Rendered height.
@@ -265,10 +265,11 @@ Common flags.
 -F, --filter            # Upscaler filter (linear, nearest, fsr, nis, pixel)
                         #   fsr => AMD FidelityFX™ Super Resolution 1.0
                         #   nis => NVIDIA Image Scaling v1.0.3
---sharpness, --fsr-sharpness   # Upscaler sharpness from 0 (max) to 20 (min).
+--sharpness             # Upscaler sharpness from 0 (max) to 20 (min).
 
 -s, --mouse-sensitivity # Multiply mouse movement by given decimal number.
---framerate-limit 60    # Set a simple framerate limit.
+-r 100                  # Game refresh rate.
+--framerate-limit 200   # Set a simple framerate limit.
 --mangoapp              # Launch with the mangoapp.
 --adaptive-sync         # Enable adaptive sync if available (VRR).
 
@@ -294,13 +295,20 @@ gamescope  |  -w 3440 -h 1440 --force-grab-cursor -f --
 Example usage in Steam with dummy arguments.
 
 ```bash
-gamescope -w 1920 -h 1080 -W 2560 -H 1440 -F nis -O DP-1 -f -- %command%
+gamescope -w 2560 -h 1080 -W 3440 -H 1440 -F nis -O DP-1 -f -- %command%
 ```
 
-## Use in terminal
+### Use in Terminal
 
 Example usage in terminal with dummy arguments.
 
 ```bash
 gamescope -w 1920 -h 1080 -b --mangoapp --adaptive-sync -- </path/to/game/binary>
+```
+
+Some use this to wrap the entire Heroic Games Launcher app, but it is not flexible and
+therefore not recommended.
+
+```bash
+gamescope -w 1920 -h 1080 -b --mangoapp --adaptive-sync -- heroic-games-launcher-bin
 ```
