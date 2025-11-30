@@ -59,7 +59,7 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 # System
 yay -S wlogout python-pywalfox
 # Apps
-yay -S visual-studio-code-bin discord localsend heroic-games-launcher-bin
+yay -S visual-studio-code-bin discord localsend heroic-games-launcher-bin cemu simple64
 ```
 
 ## Window Manager Software
@@ -153,6 +153,7 @@ pipes.sh (Pipe visualization script of terminal colors, install from yay)
 ### Apps
 
 ```
+discord
 localsend (Make port in firewall: `sudo ufw allow 53317`)
 gimp (Photo editing)
 spotify
@@ -191,4 +192,6 @@ gamescope (Microcompositor, specific isolated graphical environment for compatib
 
 mangohud (Game performance overlay)
 
-Discord
+Cemu
+
+simple64
