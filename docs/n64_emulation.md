@@ -17,8 +17,8 @@ Create a directory structure for your ROMs:
 mkdir -p ~/Games/n64/roms
 ```
 
-Place your `.z64`, `.n64`, or `.v64` ROM files in `~/Games/n64/roms/`. Download roms
-from https://www.romsgames.net.
+Place your `.z64`, `.n64`, or `.v64` ROM files in `~/Games/n64/roms/`. Game roms can be
+downloaded from [RomsGames](https://www.romsgames.net/roms/nintendo-64/).
 
 ## Running Games
 
@@ -174,7 +174,8 @@ context.properties = {
 }
 ```
 
-Set Simple64 default settings, then toggle on the speed limiter in the **Emulation** settings.
+Set Simple64 default settings, then toggle on the speed limiter in the **Emulation**
+settings.
 
 ### Graphics Glitches
 
