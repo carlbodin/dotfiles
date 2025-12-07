@@ -1,9 +1,9 @@
 # Games on Arch
 
-* Steam
-* EpicGames
-* Gamescope
-* Emulation
+- Steam
+- EpicGames
+- Gamescope
+- Emulation
 
 ## Steam
 
@@ -119,6 +119,10 @@ See `gamescope --help` in terminal for more.
 ### Simple64
 
 See guide [n64_emulation.md](n64_emulation.md).
+
+### Dolphin
+
+See guide [gamecube_wii_emulation.md](gamecube_wii_emulation.md).
 
 ### Cemu
 

@@ -11,13 +11,18 @@ Launch Dolphin from your application menu or by running `dolphin-emu` in the ter
 
 Game roms can be downloaded from RomsGames,
 [GameCube](https://www.romsgames.net/roms/gamecube/) and
-[Wii](https://www.romsgames.net/roms/nintendo-wii/).
+[Wii](https://www.romsgames.net/roms/nintendo-wii/). Another interesting website is
+(vimm)[https://vimm.net].
+
+**Wii:** Unzip the file and place in your roms folder. The `NKit` file format is a
+higher compression format that works for most games as is. Can be converted but not in
+`Dolphin`. `Dolphin` has a built in converter, but it cannot reverse `NKit`.
 
 ### 1. Configure Game Paths
 
 When you first launch Dolphin, you'll want to tell it where your game files are located:
 
-- Click **Config** in the top menu
+- Click **Options** and **Configuraton** in the top menu
 - Go to the **Paths** tab
 - Click **Add** and navigate to the folder containing your GameCube/Wii game images
   (ISO, WRVD, etc.)
