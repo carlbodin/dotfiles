@@ -77,16 +77,18 @@ Settings → Graphics Settings:
 
 ## Keyboard Controls (Default)
 
-- **Arrow Keys**: D-pad
-- **A/S/Z/X**: C-buttons (C-Up, C-Down, C-Left, C-Right)
+- **Arrow Keys**: Control stick
+- **A/S/W/D**: D-pad
+- **J/K/I/L**: C-buttons
 - **Enter**: Start
-- **Right Shift**: A button
-- **Right Ctrl**: B button
-- **Space**: Z trigger
-- **Backspace**: L trigger
-- **/**: R trigger
-- **F5**: Save state
-- **F7**: Load state
+- **Shift**: A button
+- **Ctrl**: B button
+- **Z**: Z trigger
+- **X**: L trigger
+- **C**: R trigger
+
+- **P**: Pause
+- **M**: Mute
 - **F9**: Reset
 - **Esc**: Quit
 
@@ -94,10 +96,12 @@ You can customize these in Settings → Input Settings.
 
 ## Save Files & States
 
-Simple64 saves are stored in:
+`SaveSRAMPath` is the in-game saves path, while `SaveStatePath` is the state saves path
+of the entire emulator's exact state with game running. Simple64 saves are stored in:
 
-- Check Settings → Paths → Data directory for exact location
-- Typically: `~/.local/share/simple64/save/`
+- `Settings` → `Core and Video Settings` → `SaveStatePath` & `SaveSRAMPath` fields
+- Default for both in-game saves (Memory Pak `.mpk`, EEPROM `.eep`, or `.sra`) and
+  entire emulator state saves (`.st*`, `.pj*`): `~/.local/share/mupen64plus/save`
 
 **Quick save/load:**
 
@@ -214,7 +218,7 @@ sudo usermod -aG input $USER
 
 ```bash
 # Make all ROMs readable
-chmod 644 ~/Gaming/N64/Roms/*
+chmod 644 ~/Games/n64/roms/*
 ```
 
 ### Simple64 Won't Launch
@@ -266,10 +270,11 @@ Some games may require specific settings:
 Create a reference file:
 
 ```bash
-nano ~/Games/n64/hotkeys.txt
+nano ~/.config/simple64/hotkeys.txt
 ```
 
-Paste your custom key mappings for quick reference.
+Paste your custom key mappings for quick reference. Add the path to the hotkeys file in
+the `Settigs` → `Core and Video Settings` menu.
 
 ## Resources
 
