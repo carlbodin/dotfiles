@@ -1,7 +1,7 @@
 # Cemu on Arch
 
-A guide to installing, configuring, and using Cemu (Wii U emulator) on
-Arch Linux with wiiudownloader for game management.
+A guide to installing, configuring, and using Cemu (Wii U emulator) on Arch Linux with
+wiiudownloader for game management.
 
 ## Table of Contents
 
@@ -386,8 +386,6 @@ For games requiring gyro (like Breath of the Wild):
 - Verify internet connection
 - Check that Title ID and keys are correct
 - Ensure sufficient disk space
-- **Never use "Decrypt Contents" or "Delete encrypted contents"** - files must remain
-  encrypted for Cemu
 - See the
   [wiiudownloader troubleshooting guide](https://xpl0itu.github.io/WiiUDownloaderDocs/docs/)
 
