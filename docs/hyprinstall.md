@@ -42,9 +42,9 @@ Core system packages with complete `pacman` install commands.
 # System base
 sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland nano iwd networkmanager wget pipewire openssh git less ufw
 # Window manager environment
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab man-db htop firefox fzf swayimg python-pywal
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker kitty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab firefox swayimg python-pywal power-profiles-daemon
 # Utility
-sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope
+sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope man-db htop fzf
 # Apps
 sudo pacman -S vlc gimp spotify libreoffice-fresh steam  # Steam: Remember to enable pacman multilib.
 # Fonts
@@ -80,6 +80,7 @@ hyprshot
 ```
 brightnessctl
 cliphist
+power-profiles-daemon (Battery modes)
 sddm
 swaync
 ufw (load iptables kernel modules, set rules and enable ufw)
@@ -89,27 +90,45 @@ wlogout
 wofi
 ```
 
-#### Bluetooth stack
+#### Bluetooth Stack
 
 ```
 bluez: bluetooth low-level control
 blueman: gui that uses bluez
 ```
 
-#### Internet stack
+#### Internet Stack
 
 ```
 iwd: Low level control, authentication, and protocols.
 NetworkManager: Higher level control, connecting ethernet wifi vpn, passwords, ip config, nmcli.
 ```
 
-#### Sound stack
+#### Sound Stack
 
 Audio server `pipewire` will use a compatibility layer for `pulseaudio`.
 
 ```
 pipewire: low level control, modern, low-latency, and secure
 pavucontrol: gui (orig pulseaudio but pipewire has compatibility layer)
+```
+
+#### Power Profiles
+
+For devices with battery, the power profiles daemon can be used for battery mode
+control. Use this to enable and start the service.
+
+```bash
+sudo systemctl enable --now power-profiles-daemon
+```
+
+Examples usage from the command line.
+
+```bash
+powerprofilesctl list
+powerprofilesctl set power-saver
+powerprofilesctl set balanced
+powerprofilesctl set performance
 ```
 
 ### Utility Apps
@@ -134,7 +153,7 @@ git-lfs
 htop
 man
 ripgrep (Search file content fast)
-tldr (Summarized manual page with examples.)
+tldr (Summarized manual page with examples)
 tmux
 pastel (Color palette generator)
 wf-recorder (Wayland screenrecorder: `wf-recorder -f output.mp4`)
