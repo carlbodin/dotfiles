@@ -11,6 +11,10 @@
         co = checkout
         cp = cherry-pick
         su = submodule update --recursive --init
+        cf = commit --fixup
+        sl = stash list
+        ss = stash show
         last = log -1 HEAD
         siiu = push --force-with-lease --no-verify
         ria = rebase -i --autosquash --autostash
+        ci = !git checkout $(git branch --sort=-committerdate | fzf | xargs)
