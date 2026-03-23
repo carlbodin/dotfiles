@@ -20,7 +20,7 @@ limit=10
   # This is statically white.
   text="#c8c8c8f2"
 
-  mapfile -t allcolors < <(tail -n +2 "$loc/colors")
+  mapfile -t allcolors < <(tail -n +2 "$loc/colors" | grep -E '^#[0-9a-fA-F]{6,8}$')
   tooltip="<b>   COLORS</b>\n\n"
 
   tooltip+="-> <b>$text</b>  <span color='$text'></span>  \n"
@@ -41,6 +41,7 @@ check hyprpicker || {
 }
 killall -q hyprpicker
 color=$(hyprpicker)
+[[ "$color" =~ ^#[0-9a-fA-F]{6,8}$ ]] || exit
 
 check wl-copy && {
   echo "$color" | sed -z 's/\n//g' | wl-copy
@@ -50,5 +51,6 @@ prevColors=$(head -n $((limit - 1)) "$loc/colors")
 echo "$color" >"$loc/colors"
 echo "$prevColors" >>"$loc/colors"
 sed -i '/^$/d' "$loc/colors"
+grep -E '^#[0-9a-fA-F]{6,8}$' "$loc/colors" > "$loc/colors.tmp" && mv "$loc/colors.tmp" "$loc/colors"
 source ~/.cache/wal/colors.sh && notify-send "Color Picker" "This color has been selected: $color" -i $wallpaper
 pkill -RTMIN+1 waybar
