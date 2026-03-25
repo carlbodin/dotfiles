@@ -167,6 +167,11 @@ I do not use this.
 To swap on `ZRAM`. I do not use this, since I do not have minimal RAM. Also, my swap is
 already configured in section [2.3.4 Disk Configuration](#234-disk-configuration) above.
 
+Swapping without ZRAM and on a separate partition is the must robust and compatible
+setup for hibernation to work properly. See
+[docs/configuration.md](/docs/configuration.md) for more details on setting up
+hibernation.
+
 ##### 2.3.7 Bootloader
 
 Choose `systemd-boot` on single OS systems, and `GRUB` on multiple OS systems (dual

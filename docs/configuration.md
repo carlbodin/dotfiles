@@ -184,13 +184,23 @@ image/gif=swayimg.desktop
 
 ## Hibernation
 
-Hibernation has some prerequisites. During `archinstall`, if you setup a separate swap
-partition and run the `systemd bootloader`, hibernation will work out of the box. But if
-you did not, this guide shows you how to setup a swapfile for hibernation after the
-`archinstall` process.
+Hibernation has some prerequisites. During `archinstall`, if you (1) setup a separate
+swap partition, (2) run the `systemd bootloader`, and (3) not have NVIDIA GPU,
+hibernation will work out of the box. But if any of these conditions are not met, this
+section will guide you in setting your system up for hibernation after the `archinstall`
+process.
 
 - Note that you cannot hibernate on ZRAM swap.
 - The swap needs to possibly fit your full RAM.
+
+Reboot before trying it out, then test with `systemctl hibernate`.
+
+### Create Swapfile
+
+Prefer swap on a separate partition for robustness. That way you can point to a disk
+UUID instead of pointing to specific disk offsets, which may become stale after system
+updates. This section guides you through creation of a swapfile on the OS partition, in
+case you did not create a separate swap partition.
 
 Check your RAM size.
 
@@ -213,6 +223,10 @@ Add to `/etc/fstab`:
 /swapfile none swap defaults 0 0
 ```
 
+### GRUB
+
+Prefer `systemd-boot` bootloader before `GRUB`
+
 Find your root partition UUID and swap file offset.
 
 ```bash
@@ -226,18 +240,41 @@ Edit `/etc/default/grub` and change this line:
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet resume=UUID=<YOUR-ROOT-UUID> resume_offset=<YOUR-OFFSET>"
 ```
 
-Edit `/etc/mkinitcpio.conf` and add `resume` hook AFTER `udev`:
+Note the double equal signs `=UUID=` in the resume setting.
+
+Edit `/etc/mkinitcpio.conf` and add `resume` hook AFTER `udev` and `filesystems`:
 
 ```bash
 HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems resume fsck)
 ```
 
-Regenerate GRUB config:
+Rebuilt `initramfs`.
 
 ```bash
 sudo mkinitcpio -P
+```
+
+Regenerate `GRUB` config:
+
+```bash
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-Reboot before trying it out. Then test with systemctl hibernate. The key is getting that
-`GRUB` `resume=` parameter pointing to your actual disk swap.
+### NVIDIA GPU
+
+For NVIDIA GPUs, create the file `nvidia-hibernate.conf` in `/etc/modprobe.d/` to ensure
+the settings are accessible during boot. Enter the configuration:
+
+```bash
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+options nvidia NVreg_TemporaryFilePath=/var/tmp
+```
+
+`NVreg_TemporaryFilePath=/var/tmp` ensures persistent storage of the hibernation image,
+compared to `/tmp` which is wiped on reboot.
+
+Rebuild the `initramfs`.
+
+```bash
+sudo mkinitcpio -P
+```
