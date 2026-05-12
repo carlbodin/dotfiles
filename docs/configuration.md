@@ -104,7 +104,7 @@ Find possible culprit and disable their autostart, or uninstall them.
 sudo systemctl disable wpa_supplicant  # Given you are using iwd instead.
 ```
 
-## Add Custom Shortcuts to App Launchers
+## Add Shortcuts to App Launchers
 
 Add a symlink in `~/.local/bin` to your binary.
 
@@ -145,6 +145,56 @@ If you run into errors, run this command to validate the entry.
 ```bash
 desktop-file-validate ~/.local/share/applications/cemu.desktop
 ```
+
+## Add Autostart App Entries
+
+There are multiple ways to do this, and the preferred way depends on your OS and display
+server.
+
+### Hyprland
+
+The preferred native approach is to add the line
+
+```
+exec-once = flameshot
+```
+
+inside of `~/.config/hypr/hyprland.conf`.
+
+### XDG Autostart
+
+Requirements `xdg-desktop-portal` and `xdg-desktop-portal-hyprland`.
+
+```bash
+sudo pacman -S xdg-desktop-portal xdg-desktop-portal-hyprland
+```
+
+Add `.desktop` entry to `~/.config/autostart/`.
+
+```bash
+# ~/.config/autostart/flameshot.desktop
+
+[Desktop Entry]
+Type=Application
+Exec=flameshot
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Flameshot
+Name=Flameshot
+Comment[en_US]=Screenshot tool
+Comment=Screenshot tool
+```
+
+> **NB:** This entry is X11 Gnome specific. May not be copy-pasted to a Wayland server.
+
+Validate the file.
+
+```bash
+desktop-file-validate ~/.local/share/applications/flameshot.desktop
+```
+
+This is equivalent of using the `Startup Applications` GUI app on Ubuntu.
 
 ## Add Default Apps
 
