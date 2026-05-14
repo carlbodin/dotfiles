@@ -165,9 +165,19 @@ hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "slide" })
 
 hl.config({
-    dwindle = {
-        preserve_split = true,
-    },
+  dwindle = {
+      force_split                  = 0,
+      preserve_split               = false,
+      smart_split                  = false,
+      smart_resizing               = true,
+      permanent_direction_override = false,
+      special_scale_factor         = 1,
+      split_width_multiplier       = 1.0,
+      use_active_for_splits        = true,
+      default_split_ratio          = 1.0,
+      split_bias                   = 0,
+      precise_mouse_move           = false,
+  },
 })
 
 hl.config({
