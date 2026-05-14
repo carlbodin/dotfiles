@@ -30,16 +30,17 @@ hl.monitor({
 })
 
 -- Laptop x360.
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "1920x1080@60",
-    position = "0x0",
-    scale    = 1,
-    cm       = "auto",
-})
+-- hl.monitor({
+--     output   = "eDP-1",
+--     mode     = "1920x1080@60",
+--     position = "0x0",
+--     scale    = 1,
+--     cm       = "auto",
+-- })
 
 -- Default workspaces for monitors
-hl.workspace({ workspace = 1, monitor = "DP-1" })
+hl.workspace_rule({ workspace = "1", monitor = "DP-1" })
+-- hl.workspace_rule({ workspace = "1", monitor = "eDP-1" }) -- Laptop x360.
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -165,7 +166,6 @@ hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "
 
 hl.config({
     dwindle = {
-        pseudotile = true,
         preserve_split = true,
     },
 })
@@ -236,7 +236,7 @@ hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprlock.sh"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock --grace 2"))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/wlogout/wlogout.sh"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/select_wallpaper.sh"))
 hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/waybar_toggle.sh"))

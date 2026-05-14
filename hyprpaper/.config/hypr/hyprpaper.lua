@@ -3,12 +3,6 @@
 
 hl.config({
     wallpaper = {
-        -- Laptop x360
-        -- {
-        --     monitor = "eDP-1",
-        --     path = os.getenv("HOME") .. "/.config/hypr/select_wallpaper.jpg",
-        --     fit_mode = "cover",
-        -- },
         {
             monitor = "DP-1",
             path = os.getenv("HOME") .. "/.config/hypr/select_wallpaper.jpg",
@@ -19,6 +13,12 @@ hl.config({
             path = os.getenv("HOME") .. "/.config/hypr/select_wallpaper.jpg",
             fit_mode = "cover",
         },
+        -- Laptop x360
+        -- {
+        --     monitor = "eDP-1",
+        --     path = os.getenv("HOME") .. "/.config/hypr/select_wallpaper.jpg",
+        --     fit_mode = "cover",
+        -- },
     },
 
     splash = false,
