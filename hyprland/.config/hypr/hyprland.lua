@@ -21,7 +21,6 @@ hl.monitor({
     cm       = "auto",
     vrr      = 3,
 })
-
 hl.monitor({
     output   = "HDMI-A-1",
     mode     = "1920x1080@60",
@@ -29,8 +28,24 @@ hl.monitor({
     scale    = 1,
 })
 
+--- Laptop x360.
+-- hl.monitor({
+--     output   = "eDP-1",
+--     mode     = "1920x1080@60",
+--     position = "0x0",
+--     scale    = 1,
+--     cm       = "auto",
+-- })
+-- hl.monitor({
+--     output   = "DP-2",
+--     mode     = "1920x1080@60",
+--     position = "1920x0",
+--     scale    = 1,
+--     cm       = "auto",
+-- })
+
 -- Default workspaces for monitors
-hl.workspace({ workspace = 1, monitor = "DP-1" })
+hl.workspace_rule({ workspace = 1, monitor = "DP-1" })
 
 ---------------------
 ---- MY PROGRAMS ----

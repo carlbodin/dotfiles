@@ -22,5 +22,5 @@ alias pacprune='sudo pacman -Rns $(pacman -Qdtq)'  # Remove all orphaned package
 # PATH extension.
 export PATH="$HOME/.local/bin:$PATH"
 
-# Source rust env.
-. "$HOME/.cargo/env"
+# Source Rust env.
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
