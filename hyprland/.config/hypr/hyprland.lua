@@ -13,36 +13,36 @@
 ---- MONITORS ----
 ------------------
 
-hl.monitor({
-    output   = "DP-1",
-    mode     = "3440x1440@100",
-    position = "0x0",
-    scale    = 1,
-    cm       = "auto",
-    vrr      = 3,
-})
-hl.monitor({
-    output   = "HDMI-A-1",
-    mode     = "1920x1080@60",
-    position = "3440x360",
-    scale    = 1,
-})
-
---- Laptop x360.
 -- hl.monitor({
---     output   = "eDP-1",
---     mode     = "1920x1080@60",
+--     output   = "DP-1",
+--     mode     = "3440x1440@100",
 --     position = "0x0",
 --     scale    = 1,
 --     cm       = "auto",
+--     vrr      = 3,
 -- })
 -- hl.monitor({
---     output   = "DP-2",
+--     output   = "HDMI-A-1",
 --     mode     = "1920x1080@60",
---     position = "1920x0",
+--     position = "3440x360",
 --     scale    = 1,
---     cm       = "auto",
 -- })
+
+-- Laptop x360.
+hl.monitor({
+    output   = "eDP-1",
+    mode     = "1920x1080@60",
+    position = "0x0",
+    scale    = 1,
+    cm       = "auto",
+})
+hl.monitor({
+    output   = "DP-2",
+    mode     = "1920x1080@60",
+    position = "1920x0",
+    scale    = 1,
+    cm       = "auto",
+})
 
 -- Default workspaces for monitors
 hl.workspace_rule({ workspace = 1, monitor = "DP-1" })
@@ -217,7 +217,7 @@ hl.config({
         kb_rules   = "",
 
         follow_mouse = 1,
-        sensitivity = -0.9,
+        sensitivity = 0.0,
 
         touchpad = {
             natural_scroll = true,
