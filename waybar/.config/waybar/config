@@ -15,7 +15,6 @@
   "modules-right": [
     "group/connections",
     "pulseaudio",
-    "battery",
     "clock"
   ],
   "hyprland/workspaces": {
