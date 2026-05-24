@@ -1,13 +1,13 @@
 {
     "label": "suspend",
-    "text" : "󰤄",
+    "text" : "󰏤",
     "action": "systemctl suspend",
-    "keybind": "u"
+    "keybind": "p"
 }
 
 {
     "label": "hibernate",
-    "text" : "󰏤",
+    "text" : "󰤄",
     "action" : "systemctl hibernate",
     "keybind": "h"
 }
