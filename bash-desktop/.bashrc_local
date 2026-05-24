@@ -6,20 +6,16 @@
 #PS1='[\u@\h \W]\$ '
 
 # Init starship, unless vscode.
-if [ "$TERM_PROGRAM" != "vscode" ]; then
-  eval "$(starship init bash)"
-fi
+[[ "$TERM_PROGRAM" != "vscode" ]] && eval "$(starship init bash)"
 
 # Set up zoxide (smart cd).
-if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init bash)"
-fi
+[[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init bash)"
 
 # Aliases.
 alias si='swayimg'  # Sway wayland image viewer.
 alias pacprune='sudo pacman -Rns $(pacman -Qdtq)'  # Remove all orphaned packages, along with their subdependencies and configs.
 
-# PATH extension.
+# Home local bin PATH extension.
 export PATH="$HOME/.local/bin:$PATH"
 
 # Source Rust env.

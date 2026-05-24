@@ -52,11 +52,7 @@ alias fz='fzf --preview "cat {}" | xargs -r code'
 alias po='sudo udisksctl power-off -b'  # Power off block device.
 
 # Set up fzf key bindings and fuzzy completion.
-if command -v fzf >/dev/null 2>&1; then
-  eval "$(fzf --bash)"
-fi
+[[ -x "$(command -v fzf)" ]] && eval "$(fzf --bash)"
 
 # Git autocomplete.
-if [ -f /usr/share/bash-completion/completions/git ]; then
-  . /usr/share/bash-completion/completions/git
-fi
+[[ -f /usr/share/bash-completion/completions/git ]] && . /usr/share/bash-completion/completions/git
