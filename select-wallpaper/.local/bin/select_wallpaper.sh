@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#
+# Effective pywal command: wal -i /path/to/wallpaper.jpg -nts
+#
+
 # Check if wofi is running.
 if pgrep -x "wofi" > /dev/null; then
     # Kill wofi if it's running.
