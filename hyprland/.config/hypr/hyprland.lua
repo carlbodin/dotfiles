@@ -172,7 +172,7 @@ hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "
 hl.config({
   dwindle = {
       force_split                  = 0,
-      preserve_split               = false,
+      preserve_split               = true,
       smart_split                  = false,
       smart_resizing               = true,
       permanent_direction_override = false,
