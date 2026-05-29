@@ -15,7 +15,8 @@
   "modules-right": [
     "group/connections",
     "pulseaudio",
-    "clock"
+    "clock#date",
+    "clock#time"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -54,9 +55,12 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  "clock": {
+  "clock#time": {
     "format": "<span font_family='Noto Sans'>{:%H:%M}</span>",
-    "format-alt": "<span font_family='Noto Sans'>{:%A %d %B %H:%M}</span>",
+    "interval": 1
+  },
+  "clock#date": {
+    "format": "<span font_family='Noto Sans'>{:%A, %d %B}</span>",
     "interval": 1,
     "tooltip-format": "<span font_family='Noto Sans'><tt>{calendar}</tt></span>",
     "calendar": {
