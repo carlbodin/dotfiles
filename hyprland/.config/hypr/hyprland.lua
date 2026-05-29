@@ -257,6 +257,7 @@ hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hy
 
 -- Screen recording
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/wf-recorder.sh"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/wf-recorder.sh --output"))
 
 -- Window focus and movement
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
