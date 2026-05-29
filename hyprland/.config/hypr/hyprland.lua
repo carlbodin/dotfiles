@@ -238,31 +238,43 @@ local mainMod = "SUPER"
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+-- Hyprland
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
+hl.bind(mainMod .. " + I", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + U", hl.dsp.layout("togglesplit"))
+hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen"))
+
+-- Programs
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprlock.sh"))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/wlogout/wlogout.sh"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/select_wallpaper.sh"))
 hl.bind(mainMod .. " + ALT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/waybar_toggle.sh"))
+
+-- Scripts
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/select_wallpaper.sh"))
+
+-- Clipboard history
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/cliphist_menu.sh"))
 hl.bind(mainMod .. " + ALT + C", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/cliphist_menu.sh --delete"))
 hl.bind(mainMod .. " + SHIFT + ALT + C", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/cliphist_menu.sh --wipe"))
 
+-- Screenshots
 hl.bind("PRINT", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprshot.sh --freeze -m region"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprshot.sh -m window"))
 hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/hyprshot.sh -m output -m active"))
 
+-- Screen recording
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/hypr/wf-recorder.sh"))
+
+-- Window focus and movement
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
