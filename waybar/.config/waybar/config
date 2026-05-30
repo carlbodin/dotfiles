@@ -2,21 +2,20 @@
   "layer": "bottom",
   "position": "top",
   "margin": "8 8 0 8",
-  "spacing": 12,
+  "spacing": 6,
   "reload_style_on_change": true,
   "modules-left": [
     "custom/notification",
-    "group/1",
-    "tray"
-  ],
-  "modules-center": [
     "hyprland/workspaces"
   ],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
+    "tray",
+    "group/1",
     "group/connections",
-    "pulseaudio",
-    "clock#date",
-    "clock#time"
+    "pulseaudio"
   ],
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -33,7 +32,8 @@
         4,
         5
       ]
-    }
+    },
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"{}\" })'"
   },
   "custom/notification": {
     "tooltip": true,
@@ -55,13 +55,8 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  "clock#time": {
-    "format": "<span font_family='Noto Sans'>{:%H:%M}</span>",
-    "interval": 1
-  },
-  "clock#date": {
-    "format": "<span font_family='Noto Sans'>{:%A, %d %B}</span>",
-    "interval": 1,
+  "clock": {
+    "format": "<span font_family='Noto Sans'>{:%A  -  %H:%M  -  %d %B}</span>",
     "tooltip-format": "<span font_family='Noto Sans'><tt>{calendar}</tt></span>",
     "calendar": {
       "mode": "month",
