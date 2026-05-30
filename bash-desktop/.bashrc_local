@@ -6,7 +6,7 @@
 #PS1='[\u@\h \W]\$ '
 
 # Init starship, unless vscode.
-[[ "$TERM_PROGRAM" != "vscode" ]] && eval "$(starship init bash)"
+[[ "$TERM_PROGRAM" != "vscode" ]] && [[ "$XDG_SESSION_TYPE" != "tty" ]] && eval "$(starship init bash)"
 
 # Set up zoxide (smart cd).
 [[ -x "$(command -v zoxide)" ]] && eval "$(zoxide init bash)"
