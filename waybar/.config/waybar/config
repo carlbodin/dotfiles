@@ -9,7 +9,9 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock"
+    "clock#weekday",
+    "clock#time",
+    "clock#date"
   ],
   "modules-right": [
     "tray",
@@ -55,8 +57,12 @@
     "on-click-right": "swaync-client -d -sw",
     "escape": true
   },
-  "clock": {
-    "format": "<span font_family='Noto Sans'>{:%A  -  %H:%M  -  %d %B}</span>",
+  "clock#weekday": {
+    "format": "{:%A}",
+    "tooltip": false
+  },
+  "clock#time": {
+    "format": "{:%H:%M}",
     "tooltip-format": "<span font_family='Noto Sans'><tt>{calendar}</tt></span>",
     "calendar": {
       "mode": "month",
@@ -74,6 +80,10 @@
       "on-scroll-up": "shift_up",
       "on-scroll-down": "shift_down"
     }
+  },
+  "clock#date": {
+    "format": "{:%d %B}",
+    "tooltip": false
   },
   "wlr/taskbar": {
     "format": "{icon}",
