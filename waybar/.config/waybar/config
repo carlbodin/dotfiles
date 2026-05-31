@@ -9,13 +9,11 @@
     "hyprland/workspaces"
   ],
   "modules-center": [
-    "clock#weekday",
-    "clock#time",
-    "clock#date"
+    "group/clocks"
   ],
   "modules-right": [
     "tray",
-    "group/1",
+    "group/tools_other",
     "group/connections",
     "pulseaudio"
   ],
@@ -85,6 +83,14 @@
     "format": "{:%d %B}",
     "tooltip": false
   },
+  "group/clocks": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock#weekday",
+      "clock#time",
+      "clock#date"
+    ]
+  },
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": "16",
@@ -98,7 +104,7 @@
     "format": "{icon}",
     "spacing": 10
   },
-  "group/1": {
+  "group/tools_other": {
     "orientation": "horizontal",
     "modules": [
       "idle_inhibitor",

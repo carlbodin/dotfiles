@@ -26,7 +26,6 @@ window#waybar {
 .modules-center {
   padding: 0px;
   margin: 6px 0px 6px 0px;
-  background: alpha(@background, 0.5);
   border-radius: 16px;
 }
 .modules-right {
@@ -97,19 +96,27 @@ tooltip {
   color: alpha(@color15, 0.95);
 }
 #clock.time {
+  margin: 0px;
+  padding: 0px 3px 1px 3px;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
   background: none;
   font-family: "Noto Sans";
   color: alpha(@color15, 0.95);
 }
 #clock.date {
   margin: 1px;
-  padding: 0px 15px 0px 5px;
+  padding: 0px 15px 0px 6px;
   background: none;
   font-weight: 400;
   font-family: "Noto Sans";
   color: alpha(@color15, 0.95);
+}
+#clocks {
+  background: alpha(@background, 0.5);
+  border-radius: 16px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 #custom-notification,
@@ -184,7 +191,7 @@ tooltip {
   transition: all 0.2s ease;
 }
 
-#1 {
+#tools_other {
   margin: 1px;
   border-radius: 16px;
   background: alpha(@background, 0.5);
