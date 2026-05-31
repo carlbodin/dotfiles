@@ -10,7 +10,7 @@
   --padding: calc(var(--border-radius) / 2);
   --margin: var(--border-radius);
   --main-font: "Noto Sans";
-  --icon-font: "JetBrainsMono Nerd Font";
+  --icon-font: "NotoSans Nerd Font";
 }
 
 .control-center {

@@ -48,7 +48,7 @@ sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ri
 # Apps
 sudo pacman -S vlc gimp spotify libreoffice-fresh steam  # Steam: Remember to enable pacman multilib.
 # Fonts
-sudo pacman -S ttf-jetbrains-mono-nerd ttf-cascadia-code-nerd && fc-cache -fv
+sudo pacman -S ttf-jetbrains-mono-nerd ttf-noto-nerd ttf-cascadia-code-nerd && fc-cache -fv
 ```
 
 #### AUR Packages
@@ -191,13 +191,19 @@ sudo pacman -S libreoffice-still-impress   # Only presentations
 
 ### Ricing Software
 
-JetBrainsMono Font: `sudo pacman -S ttf-jetbrains-mono-nerd && fc-cache -fv`.
+JetBrains and NotoSans Mono Nerd Font:
+
+```bash
+sudo pacman -S ttf-noto-nerd ttf-noto-nerd && fc-cache -fv
+```
+
+Download more from: https://www.nerdfonts.com/font-downloads.
 
 ```
 stow
 pywal (Color themes from the wallpaper, themes are in `~/.cache/wal/` and templates in `~/.config/wal/`)
 pywalfox (Also install as extension in Firefox)
-starship (Requires CaskadyaCove Nerd Font Mono)
+starship (Requires a nerd font, can inherit from terminal: https://www.nerdfonts.com/font-downloads)
 ```
 
 ### Games
