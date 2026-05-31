@@ -61,16 +61,16 @@
   },
   "clock#time": {
     "format": "{:%H:%M}",
-    "tooltip-format": "<span font_family='Noto Sans'><tt>{calendar}</tt></span>",
+    "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
       "on-scroll": 1,
       "format": {
-        "months": "<span color='#ffead3'><b><span font_family='Noto Sans'>{}</span></b></span>",
-        "days": "<span color='#ecc6d9'><b><span font_family='Noto Sans'>{}</span></b></span>",
-        "weeks": "<span color='#99ffdd'><b><span font_family='Noto Sans'>W{}</span></b></span>",
-        "weekdays": "<span color='#ffcc66'><b><span font_family='Noto Sans'>{}</span></b></span>",
-        "today": "<span color='#ff6699'><b><u><span font_family='Noto Sans'>{}</span></u></b></span>"
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
     },
     "actions": {
@@ -96,7 +96,7 @@
     "icon-size": "16",
     "on-click": "activate",
     "on-click-right": "close",
-    "tooltip-format": "<span font_family='Noto Sans'>Go to {title}</span>",
+    "tooltip-format": "Go to {title}",
     "ignore-list": []
   },
   "tray": {
@@ -114,7 +114,7 @@
   },
   "idle_inhibitor": {
     "format": "<span size='small'>{icon}</span>",
-    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
+    "tooltip-format": "{}",
     "format-icons": {
       "activated": "",
       "deactivated": ""
@@ -134,7 +134,7 @@
     "on-click-right": "~/.config/waybar/scripts/cliphist_menu.sh --delete",
     "on-click-middle": "~/.config/waybar/scripts/cliphist_menu.sh --wipe",
     "tooltip": true,
-    "tooltip-format": "<span font_family='Noto Sans'>Left-click: Select item\n\nRight-click: Delete item\n\nMiddle-click: Wipe history</span>"
+    "tooltip-format": "<b>Left-click:</b> Select item\n\n<b>Right-click:</b> Delete item\n\n<b>Middle-click:</b> Wipe history"
   },
   "group/connections": {
     "orientation": "horizontal",
@@ -148,30 +148,30 @@
     "format-connected": "󰂯",
     "format-off": "󰂲",
     "format-disabled": "󰂲",
-    "format-connected-battery": "󰂯 󰁹 <span font_family='Noto Sans'>{device_battery_percentage}%</span>",
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "format-connected-battery": "󰂯 󰁹 {device_battery_percentage}%",
+    "tooltip-format": "<b>Controller</b>\n{controller_alias} {controller_address}\n\n<b>Devices</b> {num_connections}",
+    "tooltip-format-connected": "<b>Controller</b>\n{controller_alias} {controller_address}\n\n<b>Devices</b>\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias} {device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%\n{device_address}",
     "on-click": "blueman-manager"
   },
   "network": {
     "format-wifi": "",
     "format-ethernet": "",
     "format-disconnected": "",
-    "tooltip-format-disconnected": "<span font_family='Noto Sans'>Error</span>",
-    "tooltip-format-wifi": "<span font_family='Noto Sans'>{essid} ({signalStrength}%)</span>  ",
-    "tooltip-format-ethernet": "<span font_family='Noto Sans'>{ifname}</span> 🖧 ",
+    "tooltip-format-disconnected": "Error",
+    "tooltip-format-wifi": "{essid} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname}",
     "on-click": "nm-connection-editor"
   },
   "pulseaudio": {
-    "format": "{icon} <span font_family='Noto Sans'>{volume}%</span>",
-    "format-bluetooth": "{icon} <span font_family='Noto Sans'>{volume}%</span>",
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
     "format-bluetooth-muted": "{icon} ",
-    "format-muted": "󰝟 <span font_family='Noto Sans'>{format_source}</span>",
-    "format-source": "<span font_family='Noto Sans'>{volume}%</span>",
+    "format-muted": "󰝟 {format_source}",
+    "format-source": "{volume}%",
     "format-source-muted": "",
-    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
+    "tooltip-format": "{}",
     "format-icons": {
       "default": [
         "",
@@ -194,11 +194,11 @@
       "warning": 30,
       "critical": 20
     },
-    "tooltip-format": "<span font_family='Noto Sans'>{}</span>",
-    "format": "{icon} <span font_family='Noto Sans'>{capacity}%</span>",
-    "format-charging": "󰂄 <span font_family='Noto Sans'>{capacity}%</span>",
-    "format-plugged": "󰂄  <span font_family='Noto Sans'>{capacity}%</span>",
-    "format-alt": "{icon} <span font_family='Noto Sans'>{time}</span>",
+    "tooltip-format": "{}",
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄  {capacity}%",
+    "format-alt": "{icon} {time}",
     "format-icons": [
       "󰁻",
       "󰁼",
