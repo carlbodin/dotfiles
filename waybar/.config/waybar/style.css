@@ -1,10 +1,20 @@
+/* Default colors. */
+@define-color background #181818;
+@define-color foreground #C8C8C8;
+@define-color color0  #1e1e2e;
+@define-color color9  #fab387;
+@define-color color15  #f5f5f5;
+
+/* Import colors generated from wal, if the file exists. */
+@import url("../../.cache/wal/colors-waybar.css");
+
 * {
   all: unset;
   font-size: 14px;
   font-family: "JetBrainsMono Nerd Font";
 }
 window#waybar {
-  background: alpha(rgb(24, 24, 24), 0.7);
+  background: alpha(@background, 0.7);
   border-radius: 20px;
   margin: 0px 100px 0px 100px;
 }
@@ -16,7 +26,7 @@ window#waybar {
 .modules-center {
   padding: 0px;
   margin: 6px 0px 6px 0px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   border-radius: 16px;
 }
 .modules-right {
@@ -25,14 +35,14 @@ window#waybar {
 }
 tooltip {
   border-radius: 7px;
-  background: alpha(rgb(24, 24, 24), 0.7);
-  color: rgba(245, 245, 245, 0.95);
+  background: alpha(@background, 0.7);
+  color: rgba(200, 200, 200, 0.95);
 }
 #workspaces {
   padding: 7px 14px 7px 10px;
   border: none;
   margin: 0px 0px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   border-radius: 16px;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
@@ -40,19 +50,23 @@ tooltip {
   all: unset;
   padding: 0px 6px;
   margin: 0px 0px;
-  color: alpha(white, 0.4);
+  color: alpha(@color9, 0.4);
   transition: all 0.2s ease;
 }
 #workspaces button:hover {
-  color: rgba(200, 200, 200, 0.5);
+  color: rgba(226, 219, 219, 0.9);
   border: none;
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
 #workspaces button.active {
-  color: #aaaaaa;
+  color: @color9;
   border: none;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+#workspaces button.active:hover {
+  color: rgba(245, 245, 245, 0.95);
   transition: all 0.2s ease;
 }
 #workspaces button.empty {
@@ -62,13 +76,13 @@ tooltip {
   transition: all 0.2s ease;
 }
 #workspaces button.empty:hover {
-  color: rgba(200, 200, 200, 0.5);
+  color: alpha(@foreground, 0.7);
   border: none;
   text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
 #workspaces button.empty.active {
-  color: #aaaaaa;
+  color: @color9;
   border: none;
   text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
@@ -80,12 +94,14 @@ tooltip {
   background: none;
   font-weight: 400;
   font-family: "Noto Sans";
+  color: alpha(@color15, 0.95);
 }
 #clock.time {
   font-weight: 500;
   font-size: 18px;
   background: none;
   font-family: "Noto Sans";
+  color: alpha(@color15, 0.95);
 }
 #clock.date {
   margin: 1px;
@@ -93,6 +109,7 @@ tooltip {
   background: none;
   font-weight: 400;
   font-family: "Noto Sans";
+  color: alpha(@color15, 0.95);
 }
 
 #custom-notification,
@@ -105,7 +122,7 @@ tooltip {
 #battery {
   margin: 1px;
   padding: 0px 15px 0 15px;
-  color: rgba(245, 245, 245, 0.95);
+  color: alpha(@color15, 0.95);
 }
 #clock:hover,
 #custom-notification:hover,
@@ -116,17 +133,19 @@ tooltip {
 #bluetooth:hover,
 #network:hover,
 #battery:hover {
-  transition: all 0.2s ease;
-  color: rgba(128, 128, 128, 0.65);
+  transition: all 0.05s linear;
+  color: alpha(@foreground, 0.65);
 }
 #custom-notification {
+  margin: 0px 0px 0px 0px;
   padding: 0px 18px 0px 12px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
 }
 #clock {
-  background: alpha(rgb(24, 24, 24), 0.5);
+  font-family: "JetBrainsMono Nerd Font";
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
 }
@@ -135,15 +154,15 @@ tooltip {
   margin: 1px;
   padding: 0px 15px 0px 15px;
   transition: all 0.2s ease;
-  color: rgba(51, 51, 51, 0.95);
+  color: alpha(@foreground, 0.95);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
 }
 
 #tray menu {
-  background: alpha(rgb(24, 24, 24), 0.5);
-  color: rgba(51, 51, 51, 0.95);
+  background: alpha(@background, 0.5);
+  color: alpha(@foreground, 0.95);
   border-radius: 10px;
   padding: 6px;
 }
@@ -155,12 +174,12 @@ tooltip {
   transition: all 0.07s linear;
 }
 #tray menu menuitem:hover {
-  color: #cccccc;
+  color: @color9;
   transition: color 0.07s linear;
 }
 
 #tray menu separator {
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   padding: 0px 5px;
   transition: all 0.2s ease;
 }
@@ -168,11 +187,11 @@ tooltip {
 #1 {
   margin: 1px;
   border-radius: 16px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
 #custom-colorpicker {
-  padding: 0px 5px 0px 6px;
+  padding: 0px 4px 0px 6px;
 }
 #custom-clipboard {
   padding-right: 18px;
@@ -181,7 +200,7 @@ tooltip {
 #connections {
   margin: 1px;
   border-radius: 16px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
 #network {
@@ -191,13 +210,13 @@ tooltip {
 #pulseaudio {
   padding: 0px 15px 0px 15px;
   border-radius: 16px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
 
 #battery {
   border-radius: 16px;
-  background: alpha(rgb(24, 24, 24), 0.5);
+  background: alpha(@background, 0.5);
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
 }
 #battery.charging {
