@@ -52,7 +52,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("swaync &")
     hl.exec_cmd("wl-paste --type text --watch cliphist -max-items 15 store &")
     hl.exec_cmd("wl-paste --type image --watch cliphist -max-items 15 store &")
-    hl.exec_cmd("hyprctl dispatch workspace 1")
+    hl.exec_cmd("hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'")
 end)
 
 -------------------------------
