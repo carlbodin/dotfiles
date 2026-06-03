@@ -93,14 +93,14 @@ tooltip {
   padding: 0px 5px 0px 15px;
   background: none;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   color: alpha(@color15, 0.95);
 }
 #clock.time {
   margin: 0px;
   padding: 0px 3px 1px 3px;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 17px;
   background: none;
   color: alpha(@color15, 0.95);
 }
@@ -109,7 +109,7 @@ tooltip {
   padding: 0px 15px 0px 6px;
   background: none;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   color: alpha(@color15, 0.95);
 }
 #clocks {
