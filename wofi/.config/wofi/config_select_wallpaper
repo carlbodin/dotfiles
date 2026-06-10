@@ -21,7 +21,7 @@ allow_markup=false
 sort_order=default
 
 # Behavior
-term=kitty
+term=alacritty
 close_on_focus_loss=true
 single_click=true
 no_actions=true

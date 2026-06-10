@@ -4,24 +4,23 @@
 [config]
 # Appearance
 width=500px
-height=490px
 location=center
 orientation=vertical
 allow_images=true
-image_size=38
+image_size=30
 columns=1
+lines=9
 hide_scroll=true
 
 # Search
 show=drun
-prompt=Search
-# matching=fuzzy
+prompt=Search...
 insensitive=true
 allow_markup=false
 sort_order=default
 
 # Behavior
-term=kitty
+term=alacritty
 close_on_focus_loss=true
 single_click=true
 no_actions=true
