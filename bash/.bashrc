@@ -24,7 +24,7 @@ HISTFILESIZE=5000
 get_directory_name() {
     local display_path=$(dirs +0)
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        local git_root=$(git rev-parse --show-toplevel)
+        local git_root=$(git rev-parse --show-toplevel 2>/dev/null)
         local rel_path="${PWD#$git_root}"
         local git_root_name="${git_root##*/}"
         echo "${git_root_name}${rel_path}"
@@ -34,7 +34,7 @@ get_directory_name() {
 }
 get_git_branch() {
     if git rev-parse --is-inside-work-tree &>/dev/null; then
-        echo " ($(git rev-parse --abbrev-ref HEAD))"
+        echo " ($(git rev-parse --abbrev-ref HEAD 2>/dev/null))"
     else
         echo " "
     fi
