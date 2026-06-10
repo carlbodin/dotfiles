@@ -1,0 +1,60 @@
+
+# ─── Window ───────────────────────────────────────────────────────────────────
+
+[window]
+opacity        = 0.5           # 0.0 (fully transparent) to 1.0 (opaque)
+blur           = true          # Requests blur from compositor — see notes below
+padding        = { x = 10, y = 0 }
+decorations    = "None"        # "None" | "Full" | "Transparent" (macOS only)
+dynamic_title  = true          # Let shell set window title
+
+[general]
+import = ["noctis.conf"]
+
+[colors.primary]
+background = "#000000"
+
+# ─── Font ─────────────────────────────────────────────────────────────────────
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "JetBrains Mono NerdFont"
+style  = "Regular"
+
+[font.bold]
+family = "JetBrains Mono NerdFont"
+style  = "Bold"
+
+[font.italic]
+family = "JetBrains Mono NerdFont"
+style  = "Italic"
+
+[font.bold_italic]
+family = "JetBrains Mono NerdFont"
+style  = "Bold Italic"
+
+# ─── Scrolling ────────────────────────────────────────────────────────────────
+
+[scrolling]
+history    = 7000
+multiplier = 3
+
+# ─── Cursor ───────────────────────────────────────────────────────────────────
+
+[cursor]
+style    = { shape = "Block", blinking = "On" }
+vi_mode_style = { shape = "Underline" }
+blink_interval = 600    # ms
+
+# ─── Selection ────────────────────────────────────────────────────────────────
+
+[selection]
+save_to_clipboard = true   # Yank-on-select; set false if you prefer explicit copy
+
+# ─── Terminal ─────────────────────────────────────────────────────────────────
+
+# [terminal]
+# shell = { program = "/bin/zsh", args = ["--login"] }
+# Uncomment and set if you want to force a specific shell

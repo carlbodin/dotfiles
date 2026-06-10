@@ -36,7 +36,7 @@ hl.workspace_rule({ workspace = 1, monitor = "DP-1" })
 ---------------------
 
 -- Set programs that you use
-local terminal    = "kitty"
+local terminal    = "alacritty"
 local fileManager = "nautilus -w"
 local menu        = os.getenv("HOME") .. "/.config/wofi/wofi.sh"
 local browser     = "firefox"
