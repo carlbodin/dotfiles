@@ -1,12 +1,14 @@
 /* Default colors. */
-@define-color background #181818;
 @define-color foreground #C8C8C8;
+@define-color background #181818;
 @define-color color0  #1e1e2e;
 @define-color color9  #fab387;
-@define-color color15  #f5f5f5;
 
 /* Import colors generated from wal, if the file exists. */
 @import url("../../.cache/wal/colors-waybar.css");
+
+/* Color override. */
+@define-color color15  #dddddd;
 
 * {
   all: unset;
@@ -149,11 +151,6 @@ tooltip {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   color: alpha(@color15, 0.95);
-}
-#clock {
-  background: alpha(@background, 0.5);
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6);
-  border-radius: 16px;
 }
 
 #tray {
