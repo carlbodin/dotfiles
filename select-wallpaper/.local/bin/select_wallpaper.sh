@@ -102,7 +102,7 @@ main() {
         echo "Copied wallpaper to SDDM theme"
     else
         echo "Warning: SDDM theme directory not found, skipping SDDM wallpaper update"
-        echo "You need to update the SDDM theme.conf to point to `select_wallpaper.jpg`."
+        echo "You need to update the SDDM theme.conf to point to select_wallpaper.jpg."
     fi
     
     # Run pywal
