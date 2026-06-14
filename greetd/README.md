@@ -46,3 +46,25 @@ Troubleshooting.
 ```bash
 journalctl -u greetd -b -1
 ```
+
+## TUI-Greet
+
+For tuigreet instead.
+
+```bash
+sudo pacman -S greetd greetd-tuigreet
+```
+
+Set the command in /etc/greetd/config.toml to
+
+```
+#/etc/greetd/config.toml
+...
+
+[default_session]
+command = "tuigreet --cmd start-hyprland --time --time-format '%a %d %b, %H:%M' --remember --remember-session --asterisks --greet-align center --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --greeting EVGA"
+
+...
+```
+
+No tuigreet-specific config file needed.
