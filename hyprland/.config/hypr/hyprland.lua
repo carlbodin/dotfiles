@@ -412,7 +412,7 @@ hl.layer_rule({
     name = "layerrule-2",
     blur = true,
     ignore_alpha = 0.2,
-    animation = "popin 50%",
+    animation = "popin 90%",
     match = { namespace = "wofi" },
 })
 
