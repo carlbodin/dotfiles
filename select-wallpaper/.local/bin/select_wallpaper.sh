@@ -24,7 +24,7 @@ menu_default() {
 
 reload_services() {
     echo "Reloading services..."
-    
+
     # Reload hyprpaper
     if pgrep -x hyprpaper > /dev/null; then
         hyprctl hyprpaper unload all
@@ -39,7 +39,7 @@ reload_services() {
         pywalfox update
         echo "Pywalfox updated"
     fi
-    
+
     # Reload swaync
     if pgrep -x swaync > /dev/null; then
         pkill swaync
@@ -73,38 +73,38 @@ main() {
     else
         choice=$(menu_default | wofi --conf ~/.config/wofi/config_select_wallpaper --show dmenu --prompt "Select wallpaper" --insensitive --sort-order alphabetical)
     fi
-    
+
     if [ -z "$choice" ]; then
         echo "No wallpaper selected. Exiting."
         echo "Don't run from VS Code integrated terminal."
         exit 0
     fi
-    
+
     # Extract the actual file path
     selected_wallpaper=$(echo "$choice" | sed 's/^img://')
-    
+
     if [ ! -f "$selected_wallpaper" ]; then
         echo "Error: Selected file does not exist: $selected_wallpaper"
         exit 1
     fi
-    
+
     echo "Selected wallpaper: $selected_wallpaper"
-    
+
     # Create symlink for hyprland
     HYPR_WALLPAPER="$HOME/.config/hypr/select_wallpaper.jpg"
     mkdir -p "$(dirname "$HYPR_WALLPAPER")"
     ln -sf "$selected_wallpaper" "$HYPR_WALLPAPER"
     echo "Created symlink: $HYPR_WALLPAPER"
-    
+
     # Copy to SDDM theme (requires sudo)
     if [ -d "$(dirname "$SDDM_WALLPAPER")" ]; then
-        kitty -e pkexec cp "$selected_wallpaper" "$SDDM_WALLPAPER"
+        alacritty -e pkexec cp "$selected_wallpaper" "$SDDM_WALLPAPER"
         echo "Copied wallpaper to SDDM theme"
     else
         echo "Warning: SDDM theme directory not found, skipping SDDM wallpaper update"
         echo "You need to update the SDDM theme.conf to point to select_wallpaper.jpg."
     fi
-    
+
     # Run pywal
     if command -v wal > /dev/null; then
         wal -i "$selected_wallpaper" -nts
@@ -112,10 +112,10 @@ main() {
     else
         echo "Warning: pywal not found, skipping color scheme generation"
     fi
-    
+
     # Reload all services
     reload_services
-    
+
     echo "Wallpaper change completed!"
 }
 

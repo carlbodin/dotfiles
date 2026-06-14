@@ -3,6 +3,7 @@
 The following configs are stowable with GNU `stow`.
 
 ```bash
+- alacritty
 - bash
 - bash-desktop  # local desktop
 - bash-rpi4  # local rpi4
