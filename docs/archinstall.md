@@ -321,6 +321,27 @@ rather than the `Windows` specific bootloader.
 Troubleshooting: If your firmware ignores changes, check for a “Fast Boot” or “Windows
 Boot Manager priority” option in BIOS and disable it.
 
+#### 2.5 Make GRUB Auto Boot into an OS
+
+Check your Arch menu entry name in GRUB: `sudo grep "^menuentry " /boot/grub/grub.cfg`
+
+Edit `/etc/default/grub` and set:
+
+```
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=0
+GRUB_TIMEOUT_STYLE=hidden
+GRUB_SAVEDEFAULT=true
+```
+
+Rebuild GRUB config: `sudo grub-mkconfig -o /boot/grub/grub.cfg`.
+
+Set Arch as default: `sudo grub-set-default "Arch Linux"`.
+
+Verify saved default: `sudo grub-editenv list` should say `saved_entry=Arch Linux`.
+
+Reboot.
+
 ## 3. First Boot
 
 Boot into your new `archlinux` system.
