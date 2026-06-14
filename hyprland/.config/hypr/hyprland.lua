@@ -330,13 +330,13 @@ hl.window_rule({
 hl.window_rule({
     name = "windowrule-3",
     idle_inhibit = "fullscreen",
-    match = { class = "^(*)$" },
+    match = { class = "^(.*)$" },
 })
 
 hl.window_rule({
     name = "windowrule-4",
     idle_inhibit = "fullscreen",
-    match = { title = "^(*)$" },
+    match = { title = "^(.*)$" },
 })
 
 hl.window_rule({
