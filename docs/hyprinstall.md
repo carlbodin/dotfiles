@@ -32,6 +32,59 @@ relevant files to `~/dotfiles/local-dotfiles-backup/`.
 8. There are even further configuration options described in `docs/configuration.md`.
    Happy ricing!
 
+## Graphical Session Declaration
+
+A Wayland compositor is expected to tell systemd that it is a graphical session. This is
+a minimal way of starting the `graphical-session.target` if you don’t want to use
+`UWSM`. This target will autostart user services like bars and notification daemons, but
+some services like `XDG Desktop Portal` (and therefore `XDPH`) may even refuse to start
+without it. You can manage this yourself by creating a `hyprland-session.target` that
+binds to the `graphical-session.target`, then launching it in your config.
+
+First create the unit with
+`systemctl --user edit --full --force hyprland-session.target`:
+
+```
+[Unit]
+Description=Hyprland session
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+PropagatesStopTo=graphical-session.target
+```
+
+Then start and stop it in your config:
+
+```lua
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
+end)
+
+hl.on("hyprland.shutdown", function()
+    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
+    -- uses a blocking exec function and sleeps a bit to give things time to close
+    -- you might also want to kill troublesome/crashing non-systemd background services here:
+    -- os.execute("pkill wallpaperthing; systemctl --user stop hyprland-session.target && sleep 0.1")
+end)
+```
+
+Restart your session. This systemd target should now be loaded.
+
+```bash
+systemctl --user status graphical-session.target xdg-desktop-portal.service
+```
+
+And these environment variables should be set.
+
+```bash
+env | grep XDG
+
+# output, among others:
+# XDG_CURRENT_DESKTOP=Hyprland
+# XDG_SESSION_DESKTOP=Hyprland
+# XDG_SESSION_TYPE=wayland
+```
+
 ## Packages
 
 Core system packages with complete `pacman` install commands.
