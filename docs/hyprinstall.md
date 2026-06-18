@@ -93,11 +93,11 @@ Core system packages with complete `pacman` install commands.
 
 ```bash
 # System base
-sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal-hyprland nano iwd networkmanager wget pipewire openssh git less ufw
+sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire openssh git less ufw
 # Window manager environment
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman xdg-desktop-portal-gtk nautilus baobab firefox swayimg python-pywal power-profiles-daemon
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman nautilus baobab firefox swayimg python-pywal power-profiles-daemon
 # Utility
-sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope man-db htop fzf
+sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope man-db htop fzf curl
 # Apps
 sudo pacman -S vlc gimp spotify libreoffice-fresh steam  # Steam: Remember to enable pacman multilib.
 # Fonts
