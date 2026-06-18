@@ -294,10 +294,22 @@ hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(mainMod .. " + plus",       hl.dsp.exec_cmd("hyprctl dispatch resizeactive 40 0"))
-hl.bind(mainMod .. " + minus",      hl.dsp.exec_cmd("hyprctl dispatch resizeactive -40 0"))
-hl.bind(mainMod .. " + SHIFT + plus",  hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 40"))
-hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 0 -40"))
+-- Switch to a submap called `resize`.
+hl.bind("ALT + R", hl.dsp.submap("resize"))
+
+-- Start a submap called "resize".
+hl.define_submap("resize", function()
+
+    -- Set repeating binds for resizing the active window.
+    hl.bind("right", hl.dsp.window.resize({ x = 40, y = 0, relative = true}), { repeating = true })
+    hl.bind("left", hl.dsp.window.resize({ x = -40, y = 0, relative = true}), { repeating = true })
+    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 40, relative = true}), { repeating = true })
+    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -40, relative = true}), { repeating = true })
+
+    -- Use `reset` to go back to the global submap
+    hl.bind("escape", hl.dsp.submap("reset"))
+
+end)
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
