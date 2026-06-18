@@ -259,6 +259,12 @@ pywalfox (Also install as extension in Firefox)
 starship (Requires a nerd font, can inherit from terminal: https://www.nerdfonts.com/font-downloads)
 ```
 
+### Themes
+
+Since Hyprland is not a fully-fledged Desktop Environment, you will need to use tools
+such as `lxappearance` or `nwg-look` (recommended) for GTK, and `hyprqt6engine` for qt6
+apps.
+
 ### Games
 
 Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
