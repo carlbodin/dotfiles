@@ -47,6 +47,7 @@ local browser     = "firefox"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("hyprpaper &")
     hl.exec_cmd("hypridle &")
     hl.exec_cmd("waybar &")
@@ -209,17 +210,17 @@ hl.config({
         kb_rules   = "",
 
         follow_mouse = 1,
-        sensitivity = -0.9,
+        sensitivity = 0.0,
 
         touchpad = {
-            natural_scroll = true,
+            natural_scroll = false,
         },
     },
 })
 
 hl.device({
-    name        = "name",
-    sensitivity = 0.0,
+    name        = "razer-razer-deathadder-v2-x-hyperspeed",
+    sensitivity = -0.9,
 })
 
 ---------------------
@@ -317,13 +318,15 @@ hl.bind("XF86Display",    hl.dsp.exec_cmd("hyprctl dispatch dpms toggle"))
 --------------------------------
 
 local suppressMaximizeRule = hl.window_rule({
-    name  = "windowrule-1",
+    -- Ignore maximize requests from all apps. You'll probably like this.
+    name  = "suppress-maximize-events",
     match = { class = ".*" },
     suppress_event = "maximize",
 })
 
 hl.window_rule({
-    name  = "windowrule-2",
+    -- Fix some dragging issues with XWayland.
+    name  = "fix-xwayland-drags",
     match = {
         class      = "^$",
         title      = "^$",
@@ -333,6 +336,14 @@ hl.window_rule({
         pin        = false,
     },
     no_focus = true,
+})
+
+hl.window_rule({
+    -- Hyprland-run windowrule.
+    name = "move-hyprland-run",
+    match = { class = "hyprland-run" },
+    move  = "20 monitor_h-120",
+    float = true,
 })
 
 hl.window_rule({
@@ -450,11 +461,4 @@ hl.layer_rule({
     ignore_alpha = 0.2,
     animation = "popin 85%",
     match = { namespace = "swaync-control-center" },
-})
-
-hl.window_rule({
-    name = "move-hyprland-run",
-    match = { class = "hyprland-run" },
-    move  = "20 monitor_h-120",
-    float = true,
 })

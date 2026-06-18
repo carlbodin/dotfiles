@@ -47,8 +47,9 @@ reload_services() {
         echo "Swaync reloaded"
     fi
 
-    # Reload waybar if running
+    # Reload waybar, if running, with small delay
     if pgrep -x waybar > /dev/null; then
+        sleep 0.5
         pkill waybar
         waybar &
         echo "Waybar reloaded"
@@ -98,7 +99,7 @@ main() {
 
     # Copy to SDDM theme (requires sudo)
     if [ -d "$(dirname "$SDDM_WALLPAPER")" ]; then
-        alacritty -e pkexec cp "$selected_wallpaper" "$SDDM_WALLPAPER"
+        pkexec cp "$selected_wallpaper" "$SDDM_WALLPAPER"
         echo "Copied wallpaper to SDDM theme"
     else
         echo "Warning: SDDM theme directory not found, skipping SDDM wallpaper update"

@@ -93,9 +93,9 @@ Core system packages with complete `pacman` install commands.
 
 ```bash
 # System base
-sudo pacman -S --needed pacman-contrib wayland-protocols qt6 qt6-wayland xdg-utils xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire openssh git less ufw
+sudo pacman -S --needed pacman-contrib wayland-protocols xdg-utils xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire openssh git less ufw
 # Window manager environment
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman nautilus baobab firefox swayimg python-pywal power-profiles-daemon
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker hyprpolkitagent alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman nautilus baobab firefox swayimg python-pywal power-profiles-daemon qt5-wayland qt6-wayland
 # Utility
 sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope man-db htop fzf curl
 # Apps
@@ -127,6 +127,7 @@ hyprland
 hyprlock
 hyprpaper
 hyprpicker
+hyprpolkitagent
 hyprshot
 ```
 
@@ -142,6 +143,9 @@ wl-clipboard
 wlogout
 wofi
 ```
+
+As an alternative to `wofi`, there is now
+[hyprlauncher](https://github.com/hyprwm/hyprlauncher).
 
 #### Bluetooth Stack
 
