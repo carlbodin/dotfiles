@@ -3,7 +3,7 @@
 Required packages.
 
 ```bash
-sudo pacman -S greetd greetd-regreet cage gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-uglyf
+sudo pacman -S greetd gamescope greetd-regreet gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-uglyf
 ```
 
 The greeter system user must exist — greetd creates it, but verify.
@@ -55,14 +55,14 @@ For tuigreet instead.
 sudo pacman -S greetd greetd-tuigreet
 ```
 
-Set the command in /etc/greetd/config.toml to
+Set the command in `/etc/greetd/config.toml` to
 
 ```
 #/etc/greetd/config.toml
 ...
 
 [default_session]
-command = "tuigreet --cmd start-hyprland --time --time-format '%a %d %b, %H:%M' --remember --remember-session --asterisks --greet-align center --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --greeting EVGA"
+command = "tuigreet --cmd start-hyprland --time --time-format '%a %d %b, %H:%M' --remember --remember-session --asterisks --greet-align center --greeting EVGA"
 
 ...
 ```
