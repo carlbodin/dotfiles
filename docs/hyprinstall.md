@@ -231,9 +231,9 @@ pipes.sh (Pipe visualization script of terminal colors, install from yay)
 ```
 discord
 localsend (Make port in firewall: `sudo ufw allow 53317`)
-gimp (Photo editing)
+gimp
 spotify
-vlc (Media player)
+vlc / mpv celluloid 
 vscode official
 ```
 
