@@ -32,59 +32,6 @@ relevant files to `~/dotfiles/local-dotfiles-backup/`.
 8. There are even further configuration options described in `docs/configuration.md`.
    Happy ricing!
 
-## Graphical Session Declaration
-
-A Wayland compositor is expected to tell systemd that it is a graphical session. This is
-a minimal way of starting the `graphical-session.target` if you don’t want to use
-`UWSM`. This target will autostart user services like bars and notification daemons, but
-some services like `XDG Desktop Portal` (and therefore `XDPH`) may even refuse to start
-without it. You can manage this yourself by creating a `hyprland-session.target` that
-binds to the `graphical-session.target`, then launching it in your config.
-
-First create the unit with
-`systemctl --user edit --full --force hyprland-session.target`:
-
-```
-[Unit]
-Description=Hyprland session
-BindsTo=graphical-session.target
-Wants=graphical-session-pre.target
-After=graphical-session-pre.target
-PropagatesStopTo=graphical-session.target
-```
-
-Then start and stop it in your config:
-
-```lua
-hl.on("hyprland.start", function()
-    hl.exec_cmd("systemctl --user start hyprland-session.target")
-end)
-
-hl.on("hyprland.shutdown", function()
-    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
-    -- uses a blocking exec function and sleeps a bit to give things time to close
-    -- you might also want to kill troublesome/crashing non-systemd background services here:
-    -- os.execute("pkill wallpaperthing; systemctl --user stop hyprland-session.target && sleep 0.1")
-end)
-```
-
-Restart your session. This systemd target should now be loaded.
-
-```bash
-systemctl --user status graphical-session.target xdg-desktop-portal.service
-```
-
-And these environment variables should be set.
-
-```bash
-env | grep XDG
-
-# output, among others:
-# XDG_CURRENT_DESKTOP=Hyprland
-# XDG_SESSION_DESKTOP=Hyprland
-# XDG_SESSION_TYPE=wayland
-```
-
 ## Packages
 
 Core system packages with complete `pacman` install commands.
@@ -95,7 +42,7 @@ Core system packages with complete `pacman` install commands.
 # System base
 sudo pacman -S --needed pacman-contrib wayland-protocols xdg-utils xdg-desktop-portal xdg-desktop-portal-hyprland xdg-desktop-portal-gtk nano iwd networkmanager wget pipewire openssh git less ufw
 # Window manager environment
-sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker hyprpolkitagent alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman nautilus baobab firefox swayimg python-pywal power-profiles-daemon qt5-wayland qt6-wayland
+sudo pacman -S sddm hyprland hyprpaper hyprlock hypridle hyprshot hyprpicker hyprpolkitagent kitty alacritty wofi waybar swaync wl-clipboard cliphist brightnessctl pavucontrol nm-connection-editor blueman nautilus baobab firefox swayimg power-profiles-daemon qt5-wayland qt6-wayland
 # Utility
 sudo pacman -S stow fastfetch ffmpeg wf-recorder docker tmux btop starship fd ripgrep zoxide ntfs-3g tree git-lfs tldr gamescope man-db htop fzf curl
 # Apps
@@ -233,7 +180,7 @@ discord
 localsend (Make port in firewall: `sudo ufw allow 53317`)
 gimp
 spotify
-vlc / mpv celluloid 
+vlc / mpv celluloid
 vscode official
 ```
 
@@ -246,7 +193,7 @@ sudo pacman -S libreoffice-still-calc      # Only spreadsheet
 sudo pacman -S libreoffice-still-impress   # Only presentations
 ```
 
-### Ricing Software
+## Ricing Software
 
 JetBrains and NotoSans Mono Nerd Font:
 
@@ -263,23 +210,105 @@ pywalfox (Also install as extension in Firefox)
 starship (Requires a nerd font, can inherit from terminal: https://www.nerdfonts.com/font-downloads)
 ```
 
-### Themes
+## Themes
 
 Since Hyprland is not a fully-fledged Desktop Environment, you will need to use tools
 such as `lxappearance` or `nwg-look` (recommended) for GTK, and `hyprqt6engine` for qt6
 apps.
 
-### Games
+## Gaming
 
-Steam: `sudo pacman -S steam` Also, enable pacman multilib by uncomment rows in a config
-file.
+### Steam
 
-Heroic Games Launcher (Can connect to EpicGames)
+Enable pacman multilib by uncommenting rows in the pacman config file. There is also an
+option for this during the `archinstall` process.
 
-gamescope (Microcompositor, specific isolated graphical environment for compatibility)
+```bash
+sudo nano /etc/pacman.conf
+```
 
-mangohud (Game performance overlay)
+Install Steam.
 
-Cemu
+```bash
+sudo pacman -S steam
+```
 
-simple64
+### Heroic Games Launcher
+
+Can connect to EpicGames, GOG, and Amazon Games.
+
+```bash
+yay -S heroic-games-launcher-bin
+```
+
+### Game Utils
+
+Mangohud for gaming statistics. Frame rate, GPU load, CPU load, memory usage, etc.
+
+```bash
+sudo pacman -S mangohud lib32-mangohud
+```
+
+Gamescope is a minimal compositor dedicated for gaming. You can also use it for other
+purposes, e.g., running `greetd`.
+
+```bash
+sudo pacman -S gamescope
+```
+
+### Emulation
+
+See guides on emulation of Nintendo64, GameCube, Wii, and WiiU, in separate markdowns.
+
+## Graphical Session Declaration
+
+A Wayland compositor is expected to tell systemd that it is a graphical session. This is
+a minimal way of starting the `graphical-session.target` if you don’t want to use
+`UWSM`. This target will autostart user services like bars and notification daemons, but
+some services like `XDG Desktop Portal` (and therefore `XDPH`) may even refuse to start
+without it. You can manage this yourself by creating a `hyprland-session.target` that
+binds to the `graphical-session.target`, then launching it in your config.
+
+First create the unit with
+`systemctl --user edit --full --force hyprland-session.target`:
+
+```
+[Unit]
+Description=Hyprland session
+BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+PropagatesStopTo=graphical-session.target
+```
+
+Then start and stop it in your config:
+
+```lua
+hl.on("hyprland.start", function()
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
+end)
+
+hl.on("hyprland.shutdown", function()
+    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
+    -- uses a blocking exec function and sleeps a bit to give things time to close
+    -- you might also want to kill troublesome/crashing non-systemd background services here:
+    -- os.execute("pkill wallpaperthing; systemctl --user stop hyprland-session.target && sleep 0.1")
+end)
+```
+
+Restart your session. This systemd target should now be loaded.
+
+```bash
+systemctl --user status graphical-session.target xdg-desktop-portal.service
+```
+
+And these environment variables should be set.
+
+```bash
+env | grep XDG
+
+# output, among others:
+# XDG_CURRENT_DESKTOP=Hyprland
+# XDG_SESSION_DESKTOP=Hyprland
+# XDG_SESSION_TYPE=wayland
+```
