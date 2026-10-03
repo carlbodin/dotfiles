@@ -10,7 +10,7 @@ Prerequisites:
 - A unit for downloading the ISO and preparing the USB drive on, may be the same as the
   target
 
-## 1. Prepare Bootable USB
+## 1 Prepare Bootable USB
 
 > This guide assumes that you use a linux OS.
 
@@ -58,7 +58,7 @@ The bootable USB is now prepared and ready for use. Plug it into the target hard
 boot into it. This is either automatically detected, or you need to boot into UEFI and
 then choose to boot from the USB.
 
-## 2. Archinstall
+## 2 Install the OS
 
 #### 2.1 Boot Into the USB Drive
 
@@ -105,7 +105,7 @@ Troubleshoot networking errors on failure, or connect with ethernet to continue.
 
 #### 2.3 Run the Archinstall
 
-Start by running the command `archinstall`.
+Start by running the command `archinstall` for a helpful installation wizard.
 
 ##### 2.3.1 Archinstall Language
 
@@ -164,8 +164,9 @@ I do not use this.
 
 ##### 2.3.6 Swap
 
-To swap on `ZRAM`. I do not use this, since I do not have minimal RAM. Also, my swap is
-already configured in section [2.3.4 Disk Configuration](#234-disk-configuration) above.
+To swap on `ZRAM`. I do not use this, since I do not have minimal RAM (<4GB). Also, my
+swap is already configured in section
+[2.3.4 Disk Configuration](#234-disk-configuration) above.
 
 Swapping without ZRAM and on a separate partition is the must robust and compatible
 setup for hibernation to work properly. See
@@ -174,12 +175,15 @@ hibernation.
 
 ##### 2.3.7 Bootloader
 
-Choose `systemd-boot` on single OS systems, and `GRUB` on multiple OS systems (dual
-boot).
+Choose the minimalistic `systemd-boot` on single OS systems, and `GRUB` on multiple OS
+systems (dual boot).
 
 ##### 2.3.8 Unified Kernel Images
 
-Disabled.
+Enable for a more modern single UEFI executable file instead of separate kernel,
+initramfs, kernel command line, and os-release metadata.
+
+Command line edits move to `/etc/kernel/cmdline` instead of the boot loader config.
 
 ##### 2.3.9 Hostname
 
@@ -243,7 +247,13 @@ To finish the configuration and start the actual installation process, choose `I
 If you for any reason want to the save exact configuration settings, you can serialize
 the config to a JSON like format using `Save configuration`.
 
-#### 2.4 Configure Bootloader (for dual-boot)
+#### 2.4 Post Archinstall
+
+After successful information, you are given the option to reboot and use the system or
+to `chroot` into the filesystem for furher configuration. This is recommended if you are
+dual booting, but can be skipped otherwise.
+
+#### 2.5 Configure Bootloader (for dual-boot)
 
 This is a dual-boot specific step. Other setups can skip this.
 
@@ -321,7 +331,9 @@ rather than the `Windows` specific bootloader.
 Troubleshooting: If your firmware ignores changes, check for a “Fast Boot” or “Windows
 Boot Manager priority” option in BIOS and disable it.
 
-#### 2.5 Make GRUB Auto Boot into an OS
+## 3 Boot Loader Auto Choice
+
+### 3.1 GRUB
 
 Check your Arch menu entry name in GRUB: `sudo grep "^menuentry " /boot/grub/grub.cfg`
 
@@ -342,7 +354,23 @@ Verify saved default: `sudo grub-editenv list` should say `saved_entry=Arch Linu
 
 Reboot.
 
-## 3. First Boot
+### 3.2 Systemd-boot
+
+This is the layout in case of Unified Kernel Images (UKI), uncertain if it applies in
+other cases too.
+
+```bash
+sudo nano /boot/loader/loader.conf
+```
+
+Set timeout to 0.
+
+```plaintext
+timeout 0
+# console-mode keep
+```
+
+## 4 First Boot Internet Config
 
 Boot into your new `archlinux` system.
 
@@ -404,7 +432,7 @@ Verify internet connection before continuing.
 ping 1.1.1.1
 ```
 
-### 3.2 Setup Hyprland
+## 5 Setup Hyprland
 
-It is time to install a GUI environment. See `README.md` in the repository root to
+It is time to install a GUI environment. See `hyprinstall.md` in the repository root to
 install the Window Manager `Hyprland`.
