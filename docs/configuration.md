@@ -235,10 +235,10 @@ image/gif=swayimg.desktop
 ## Hibernation
 
 Hibernation has some prerequisites. During `archinstall`, if you (1) setup a separate
-swap partition, (2) run the `systemd bootloader`, and (3) not have NVIDIA GPU,
-hibernation will work out of the box. But if any of these conditions are not met, this
-section will guide you in setting your system up for hibernation after the `archinstall`
-process.
+swap partition, (2) run the `systemd-boot` boot loader, (3) install a Desktop
+Environment during `asrchinstall`, and (4) not have NVIDIA GPU, hibernation can out of
+the box. But if any of these conditions are not met, this section will guide you in
+setting your system up for hibernation after the `archinstall` process.
 
 - Note that you cannot hibernate on ZRAM swap.
 - The swap needs to possibly fit your full RAM.
@@ -273,9 +273,45 @@ Add to `/etc/fstab`:
 /swapfile none swap defaults 0 0
 ```
 
+### Systemd-boot
+
+This section assumes a separate swap partition.
+
+Identify partition UUID.
+
+```bash
+lsblk -f
+```
+
+Copy the UUID associated with your swap target partition. Add it to the kernel command
+line. Which exists in this file when using Unified Kernel Images (UKI).
+
+```bash
+sudo nano /etc/kernel/cmdline
+```
+
+Append `resume=UUID=<swap-partition-uuid>` to the end of the single line separated by a
+space.
+
+Then, add `resume` after `filesystems` in the `initramfs` HOOKS.
+
+> **NOTE:** This is not needed if `resume` or `systemd` is already present.
+
+```bash
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems resume fsck)
+```
+
+Rebuilt `initramfs`.
+
+```bash
+sudo mkinitcpio -P
+```
+
+Reboot.
+
 ### GRUB
 
-Prefer `systemd-boot` bootloader before `GRUB`
+Prefer `systemd-boot` boot loader before `GRUB`
 
 Find your root partition UUID and swap file offset.
 
